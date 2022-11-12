@@ -1,0 +1,17 @@
+.btn-green{
+  text-decoration: none;
+  background-color: #425F48;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: smaller;
+  margin: 7px;
+  border-radius: 5px;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  &:hover{
+  background-color: #4A7553;
+  color: #ffffff;
+  }
+}
