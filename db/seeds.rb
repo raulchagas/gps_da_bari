@@ -7,11 +7,19 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning database"
 Recipe.destroy_all
+Prescription.destroy_all
+User.destroy_all
+
+
+puts "Creating user"
+@user = User.create!(
+  email: "teste@teste",
+  password: "aaaaaa"
+)
+
 
 
 puts "Creating recipes"
-
-
 times = [15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
 10.times do
   Recipe.create!(
@@ -23,8 +31,28 @@ times = [15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
   )
 end
 
-@recipes = Recipe.all
 
+
+puts "Creating prescription"
+  Prescription.create!(
+    title: "Tylenol",
+    user: @user
+  )
+  Prescription.create!(
+    title: "Advil",
+    user: @user
+  )
+
+
+
+puts "#{@user.email}"
+
+@prescriptions = Prescription.all
+@prescriptions.each do |prescription|
+  puts "#{prescription.title} - #{prescription.user.email}"
+end
+
+@recipes = Recipe.all
 @recipes.each do |recipe|
   puts "#{recipe.title} - #{recipe.description} - #{recipe.calories} - #{recipe.prep_time} - #{recipe.ranking}"
 end

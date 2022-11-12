@@ -1,0 +1,13 @@
+<%= link_to "add new prescription", new_prescription_path %>
+<ul>
+  <%@prescriptions.each do |prescription|%>
+    <div class="card">
+      <%= prescription.title%>
+      <%= link_to "see details", prescription_path(prescription) %>
+        <%= link_to "Delete",
+          prescription_path(prescription),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "btn-yellow-lg"
+        %>
+    </div>
+  <% end %>
+</ul>
