@@ -11,12 +11,14 @@ Recipe.destroy_all
 
 puts "Creating recipes"
 
+
+times = [15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
 10.times do
   Recipe.create!(
     title: Faker::Food.dish,
     description: Faker::Food.description,
     calories: rand(10..1000),
-    prep_time: rand(15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120),
+    prep_time: times.sample,
     ranking: rand(0..5)
   )
 end
