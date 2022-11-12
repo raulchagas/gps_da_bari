@@ -1,6 +1,6 @@
 oi
 
-<%= simple_form_for @body_fat do |f| %>
+<%= simple_form_for @body_fat, url: 'new_body_fat_path' do |f| %>
   <%= f.input :value,  label: 'add body fat %' %>
    <%= f.submit "Add" %>
 <% end %>
