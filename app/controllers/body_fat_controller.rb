@@ -9,7 +9,7 @@ class BodyFatController < ApplicationController
 
   def create
     @body_fat = BodyFat.new(body_fat_params)
-    # @body_fat.user = current_user
+    @body_fat.user = current_user
     if @body_fat.save
       redirect_to body_fat_index_path
     else
