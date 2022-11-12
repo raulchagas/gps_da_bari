@@ -1,4 +1,4 @@
-class BodyFatController < ApplicationController
+class BodyFatsController < ApplicationController
   def index
     @body_fats = BodyFat.all
   end
@@ -11,7 +11,7 @@ class BodyFatController < ApplicationController
     @body_fat = BodyFat.new(body_fat_params)
     @body_fat.user = current_user
     if @body_fat.save
-      redirect_to body_fat_index_path
+      redirect_to body_fats_path
     else
       render :new, status: unprocessable_entity
     end
@@ -20,7 +20,7 @@ class BodyFatController < ApplicationController
   private
 
   def body_fat_params
-    params.require(:body_fat).permit(:value)
+    params.require(:body_fat).permit(:user, :value)
   end
 
 end
