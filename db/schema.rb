@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_11_135416) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_12_171548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,10 +77,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_135416) do
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_weights_on_user_id"
   end
 
   add_foreign_key "body_fats", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "prescriptions", "users"
   add_foreign_key "vitamins", "users"
+  add_foreign_key "weights", "users"
 end
