@@ -34,14 +34,14 @@ end
 
 
 puts "Creating prescription"
-  Prescription.create!(
-    title: "Tylenol",
-    user: @user
-  )
-  Prescription.create!(
-    title: "Advil",
-    user: @user
-  )
+Prescription.create!(
+  title: "Tylenol",
+  user: @user
+)
+Prescription.create!(
+  title: "Advil",
+  user: @user
+)
 
 
 
