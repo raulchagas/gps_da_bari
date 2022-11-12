@@ -1,9 +1,11 @@
 <ul>
   <% @recipes.each do |recipe|%>
     <div class="card">
-      <%= recipe.title %>
-      <%= recipe.prep_time %>
-      <%= recipe.calories %>
+      <div class="card-title">Recipe name: <%= recipe.title %></div>
+      <span>Description: <%= recipe.description %></span>
+      <span>Prep time: <%= recipe.prep_time %> min</span>
+      <span><%= recipe.calories %> calories</span>
+      <%= link_to "See Details", recipe_path(recipe) %>
     </div>
   <% end %>
 </ul>
