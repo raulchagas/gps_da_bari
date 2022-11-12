@@ -3,6 +3,7 @@
   <%@prescriptions.each do |prescription|%>
     <div class="card">
       <%= prescription.title%>
+      <span>Usuário <%= prescription.user.email%></span>
       <%= link_to "see details", prescription_path(prescription) %>
         <%= link_to "Delete",
           prescription_path(prescription),
