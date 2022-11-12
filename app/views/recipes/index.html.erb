@@ -1,0 +1,9 @@
+<ul>
+  <% @recipes.each do |recipe|%>
+    <div class="card">
+      <%= recipe.title %>
+      <%= recipe.prep_time %>
+      <%= recipe.calories %>
+    </div>
+  <% end %>
+</ul>
