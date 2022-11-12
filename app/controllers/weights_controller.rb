@@ -9,7 +9,7 @@ class WeightsController < ApplicationController
 
   def create
     @weight = Weight.new(weight_params)
-    @user.weight = current_user
+    @weight.user = current_user
     if @weight.save
       redirect_to weights_path
     else
@@ -26,5 +26,4 @@ class WeightsController < ApplicationController
   def weight_params
     params.require(:weight).permit(:user, :value)
   end
-
 end
