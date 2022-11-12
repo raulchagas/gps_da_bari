@@ -1,5 +1,5 @@
 class BodyFat < ApplicationRecord
   belongs_to :user
 
-  validates :value, presence: true, numericallity: true
+  validates :value, presence: true, numericality: true
 end

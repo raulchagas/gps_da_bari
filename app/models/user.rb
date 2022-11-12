@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :goals, dependent: :destroy
   has_many :weights, dependent: :destroy
+  has_many :body_fats, dependent: :destroy
 end
