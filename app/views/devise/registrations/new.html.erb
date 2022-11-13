@@ -17,11 +17,11 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :date_of_surgery %>
+    <%= f.input :date_of_surgery, as: :string, input_html: { class: "datepicker" } %>
     <%= f.input :age %>
     <%= f.input :sex %>
     <%= f.input :height %>
-    <%= f.input :target_weigth %>
+    <%= f.input :target_weight %>
     <%= f.input :weight_before_surgery %>
   </div>
 
