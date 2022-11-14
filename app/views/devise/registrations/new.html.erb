@@ -1,59 +1,75 @@
 <div class="container">
-<h2 class="text-center">Sign up</h2>
+  <h2 class="text-center">Sign Up</h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
-
     <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :first_name,
+      <div class="row g-3">
+        <div class="col-md-6">
+          <%= f.input :first_name,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "first-name" } %>
-      <%= f.input :last_name,
+        </div>
+        <div class="col-md-6">
+          <%= f.input :last_name,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "last-name" } %>
-      <%= f.input :date_of_surgery, as: :string,
-                  required: true,
-                  autofocus: true,
-                  input_html: { class: "datepicker", autocomplete: "date-of-surgery"  } %>
-      <%= f.input :age,
+        </div>
+        <div class="col-md-6">
+          <%= f.input :age,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "age" } %>
-      <%= f.input :sex,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "biological-sex" } %>
-      <%= f.input :height,
+        </div>
+        <div class="col-md-6">
+          <%= f.input :height,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "height-in-cm" } %>
-      <%= f.input :target_weight,
+        </div>
+        <div class="col-md-12">
+          <%= f.input :date_of_surgery, as: :string,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "target-weight" } %>
-      <%= f.input :weight_before_surgery,
+                  input_html: { class: "datepicker", autocomplete: "date-of-surgery"  } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :weight_before_surgery,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "weight-before-surgery" } %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :target_weight,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "target-weight" } %>
+        </div>
+        <div class="col-md-12">
+          <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+        </div>
+      </div>
+      <div class="form-actions">
+      <div class="col-12, mb-3">
+        <%= f.button :submit, "Sign Up", class: "btn, btn-primary" %>
+      </div>
+      </div>
     </div>
   <% end %>
-
   <%= render "devise/shared/links" %>
-
 </div>
