@@ -1,10 +1,14 @@
 <div class="container-fluid style: margin-top 10px;">
+<%# <%acho que esse styling não vai funcionar. tem que fechar aspas da classe e colocar o style. ou usar bootstrap mt-10%> %>
+
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon nav-bari">
     <div class="container-fluid align-itens">
       <%= link_to "#", class: "navbar-brand" do %>
         <%= image_tag "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% end %>
       <h1 class="title-white">Hello user</h1>
+      <%# <% não redimensionar Hs (h1, h2, h3, h4) Para o tamanho que vocês querem, usar o h3%> 
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa-solid fa-bars icon-white"></span>
       </button>
