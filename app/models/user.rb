@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :prescriptions, dependent: :destroy
   has_many :weights, dependent: :destroy
   has_many :body_fats, dependent: :destroy
+  has_many :vitamins, dependent: :destroy
 end

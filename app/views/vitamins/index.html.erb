@@ -1,0 +1,24 @@
+
+<% if @vitamins.empty? %>
+  Streak = 0
+<% else %>
+  <% if @vitamins.last.created_at.to_date == Date.today%>
+    <% @day = Date.today %>
+    You already took your vitamins today!
+  <% else %>
+    Did you take your vitamin today?
+    <%= simple_form_for @vitamin do |f| %>
+      <%= f.submit "Yes!" %>
+    <% end %>
+    <% @day = Date.today - 1 %>
+  <% end %>
+  <% @streak = 0 %>
+  <% @vitamins = @vitamins.to_a %>
+  <% while (@vitamins.pop().created_at.to_date == @day) do %>
+    <% @streak += 1%>
+    <% @day = @day - 1%>
+    <% break if @vitamins.empty? %>
+  <% end %>
+  <p>Vitamin streak: <%= @streak %></p>
+
+<% end %>
