@@ -8,7 +8,7 @@
 
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :date_of_surgery %>
+    <%= f.input :date_of_surgery, as: :string, input_html: { class: "datepicker" } %>
     <%= f.input :age %>
     <%= f.input :sex %>
     <%= f.input :height %>
