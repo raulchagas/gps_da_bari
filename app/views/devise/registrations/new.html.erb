@@ -1,43 +1,45 @@
-<h2>Sign up</h2>
-<form>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-    <%= f.error_notification %>
-        <div class="row">
-      <div class="col">
-        <%= f.input :first_name %>
+<div class="container">
+  <form>
+    <h2 class="text-center">Sign Up</h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+      <%= f.error_notification %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :first_name %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :last_name %>
+        </div>
       </div>
-      <div class="col">
-        <%= f.input :last_name %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.input :email,
+      <%= f.input :age %>
+      <%= f.input :height %>
+      <%= f.input :sex, label: "Which option best describes you?", collection: ['Female', 'Male', 'Non-binary', 'Transgender', 'Intersex', 'I prefer not to say'] %>
+      <%= f.input :date_of_surgery, as: :string, input_html: { class: "datepicker" } %>
+      <%= f.input :target_weight %>
+      <%= f.input :weight_before_surgery %>
+      <div class="form-group">
+        <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :password,
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :password_confirmation,
+        </div>
+        <div class="col-md-6">
+          <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+        </div>
       </div>
-    </div>
-    <%= f.input :date_of_surgery, as: :string, input_html: { class: "datepicker" } %>
-    <%= f.input :age %>
-    <%= f.input :sex %>
-    <%= f.input :height %>
-    <%= f.input :target_weight %>
-    <%= f.input :weight_before_surgery %>
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
-</form>
-<%= render "devise/shared/links" %>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+    <% end %>
+  </form>
+  <%= render "devise/shared/links" %>
+</div>
