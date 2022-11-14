@@ -1,5 +1,5 @@
-<h2>Sign up</h2>
 <div class="container">
+<h2 class="text-center">Sign up</h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
@@ -23,10 +23,10 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "last-name" } %>
-      <%= f.input :date_of_surgery,
+      <%= f.input :date_of_surgery, as: :string,
                   required: true,
                   autofocus: true,
-                  input_html: { autocomplete: "date-of-surgery" } %>
+                  input_html: { class: "datepicker", autocomplete: "date-of-surgery"  } %>
       <%= f.input :age,
                   required: true,
                   autofocus: true,
