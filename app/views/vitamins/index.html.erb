@@ -1,4 +1,10 @@
 <% if @vitamins.empty? %>
+  Did you take your vitamin today?
+  <%= simple_form_for @vitamin do |f| %>
+    <%= f.input :date, as: :date %>
+    <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
+    <%= f.submit "Yes!" %>
+  <% end %>
   Streak = 0
 <% else %>
   <% if @vitamins.last.date.to_date == Date.today%>
@@ -7,7 +13,7 @@
   <% else %>
     Did you take your vitamin today?
     <%= simple_form_for @vitamin do |f| %>
-      <%= f.input :date, as: :date %>
+      <%# <%= f.input :date, as: :date %> %>
       <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
       <%= f.submit "Yes!" %>
     <% end %>
