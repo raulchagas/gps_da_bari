@@ -1,24 +1,54 @@
 <div class="container">
 
-
   <% @created = @vitamins %>
-
   <% if @created.empty? %>
     Did you take your vitamin today?
     <%= simple_form_for @vitamin do |f| %>
-      <%# <%= f.input :date, as: :date %> %>
+      <%= f.input :date, as: :date %>
       <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
       <%= f.submit "Yes!" %>
     <% end %>
-    <% @day = Date.today - 1 %>
-  <% end %>
-  <% @streak = 0 %>
-  <% @vitamins = @vitamins.to_a %>
-  <% while (@vitamins.pop().date.to_date == @day) do %>
-    <% @streak += 1%>
-    <% @day = @day - 1%>
-    <% break if @vitamins.empty? %>
-  <% end %>
-  <p>Vitamin streak: <%= @streak %></p>
+    Streak = 0
 
-<% end %>
+
+  <% else %>
+    <% if @created.last.date.to_date == Date.today%>
+      <% @day = Date.today %>
+      You already took your vitamin today!
+
+    <% else %>
+      Did you take your vitamin today?
+      <%= simple_form_for @vitamin do |f| %>
+        <%= f.input :date, as: :date %>
+        <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
+        <%= f.submit "Yes!" %>
+      <% end %>
+      <% @day = Date.today - 1 %>
+    <% end %>
+    <% @streak = 0 %>
+    <% @created = @created.to_a %>
+    <% while (@created.pop().date.to_date == @day) do %>
+      <% @streak += 1%>
+      <% @day = @day - 1%>
+      <% break if @created.empty? %>
+    <% end %>
+    <p>Vitamin streak: <%= @streak %></p>
+
+
+  <% end %>
+  <% @taken = [] %>
+  <% @vitamins.each do |vitamin|%>
+    <% @taken << vitamin.date %>
+  <% end %>
+  <div class="calendar">
+    <%= month_calendar do |date| %>
+      <% if @taken.include?(date) %>
+        <div class="blue"><%= date.day %></div>
+      <% else %>
+        <%= date.day %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+</div>
