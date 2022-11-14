@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_12_205729) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_14_142439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_205729) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.datetime "date_of_surgery"
+    t.date "date_of_surgery"
     t.integer "age"
     t.string "sex"
     t.float "height"
@@ -71,11 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_205729) do
 
   create_table "vitamins", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "name"
-    t.string "dosage"
-    t.text "description"
-    t.boolean "taken"
-    t.datetime "date"
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_vitamins_on_user_id"

@@ -9,6 +9,7 @@ puts "Cleaning database"
 Recipe.destroy_all
 Prescription.destroy_all
 User.destroy_all
+Vitamin.destroy_all
 
 
 puts "Creating user"
@@ -43,7 +44,36 @@ Prescription.create!(
   user: @user
 )
 
+# puts "Creating vitamins"
+# Vitamin.create!(
+#   date: Date.today,
+#   user: @user
+# )
 
+Vitamin.create!(
+  date: (Date.today - 5),
+  user: @user
+)
+Vitamin.create!(
+  date: (Date.today - 3),
+  user: @user
+)
+Vitamin.create!(
+  date: (Date.today - 2),
+  user: @user
+)
+Vitamin.create!(
+  date: (Date.today - 1),
+  user: @user
+)
+
+
+
+
+@vitamins = Vitamin.all
+@vitamins.each do |vitamin|
+  puts "#{vitamin.date}"
+end
 
 puts "#{@user.email}"
 
