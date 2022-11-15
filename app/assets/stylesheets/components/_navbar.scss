@@ -23,10 +23,17 @@
   // ajustar a altura, já que o elemento vai se deslocar para baixo
 
 
-  margin-left: 42px;
-  margin-right: 42px;
+  margin-left: 35px;
+  margin-right: 35px;
 
   background: #98C9A3;
+}
+
+@media(max-width: 580px) {
+  .nav-bari{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }
 
 .icon-white {
@@ -57,3 +64,5 @@
   // o nome da classe deve refletir o que ela representa. sugiro usar a classe do bootstrap para margem https://getbootstrap.com/docs/5.2/utilities/spacing/#margin-and-padding
   margin-right: 0;
 }
+
+

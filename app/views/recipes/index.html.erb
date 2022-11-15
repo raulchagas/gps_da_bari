@@ -1,24 +1,26 @@
 <div class="container">
 
-  <div class="container"> <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a recipe"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-    <%= link_to "Clear", recipes_path, class: "btn btn-secondary" %>
-  <% end %>
+  <div class="mb-3">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control  recipes-search",
+        placeholder: "Find a recipe"
+      %>
+      <%= submit_tag "Search", class: "btn btn-dark-green mx-2  recipes-search" %>
+      <%= link_to "Clear", recipes_path, class: "btn btn-light-green  recipes-search" %>
+    <% end %>
+  </div>
 
   <div class="recipes-grid">
     <% @recipes.each do |recipe|%>
-      <div class="card-product recipe-width">
-        <img src="https://source.unsplash.com/random/300×150/?<%= recipe.title.gsub(" ","-")%>" />
-        <div class="card-product-infos">
+      <div class="card-recipe recipe-width rounded">
+        <img src="https://source.unsplash.com/random/300×150/?<%= recipe.title.gsub(" ","-")%>">
+        <div class="card-recipe-infos">
           <h2><%= recipe.title %></h2>
-          <span><%= recipe.prep_time %> min</span>
-          <span><%= recipe.calories %> kcal</span>
-          <%= link_to "See Details", recipe_path(recipe) %>
+          <p>Prep time: <%= recipe.prep_time %> min</p>
+          <p>Calories: <%= recipe.calories %> kcal</p>
+          <%= link_to "See Details", recipe_path(recipe), class:"btn-light-dark-sm rounded" %>
         </div>
       </div>
     <% end %>

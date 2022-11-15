@@ -1,38 +1,78 @@
-.card-product {
+.card-recipe {
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 15px #98C9A3;
   display: flex;
   align-items: center;
 }
 
-.card-product img {
+.card-recipe img {
   height: 100%;
   width: 120px;
   object-fit: cover;
 }
 
-.card-product h2 {
+.card-recipe h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-product p {
+.card-recipe p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
-.card-product .card-product-infos {
+.card-recipe .card-recipe-infos {
   padding: 16px;
+}
+
+.recipes-search{
+  overflow: hidden;
+  background: white;
+  box-shadow: 2px 2px 15px #98C9A3;
 }
 
 .recipes-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+@media(max-width: 992px) {
+  .recipes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-dark-green{
+  background-color: #425F48;
+  opacity:0.8;
+  color: white;
+  min-width: fit-content;
+}
+
+.btn-light-green{
+  background-color: #A4C3B2;
+  opacity:0.8;
+  min-width: fit-content;
+}
+
+.btn-light-dark-sm{
+  background-color:rgb(217, 208, 208);
+  color: black;
+  text-decoration: none;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-top: 20px;
 }
