@@ -19,6 +19,10 @@ class VitaminsController < ApplicationController
     end
   end
 
+  def my_vitamins
+    @vitamins = Vitamin.where(user: current_user)
+  end
+
   private
 
   def set_vitamin

@@ -1,6 +1,6 @@
 <div class="container">
 
-  <% @created = @vitamins %>
+  <% @created = @vitamins.find_by(params[:user]) %>
   <% if @created.empty? %>
     Did you take your vitamin today?
     <%= simple_form_for @vitamin do |f| %>
