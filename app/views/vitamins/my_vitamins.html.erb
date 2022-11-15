@@ -1,17 +1,17 @@
 <div class="container">
 
-  <% @created = @vitamins %>
-  <% if @created.empty? %>
+  <% if @created.blank? %>
     Did you take your vitamin today?
     <%= simple_form_for @vitamin do |f| %>
-      <%= f.input :date, as: :date %>
+      <%= f.date_field :date, value: Date.today  %>
       <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
       <%= f.submit "Yes!" %>
-    <% end %>
-    Streak = 0
+      <% end %>
+    <%# Streak = 0 %>
 
 
   <% else %>
+    <% @created = @vitamins %>
     <% if @created.last.date.to_date == Date.today%>
       <% @day = Date.today %>
       You already took your vitamin today!
@@ -49,6 +49,3 @@
       <% end %>
     <% end %>
   </div>
-
-
-</div>

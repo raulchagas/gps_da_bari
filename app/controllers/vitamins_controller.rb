@@ -20,6 +20,7 @@ class VitaminsController < ApplicationController
   end
 
   def my_vitamins
+    @vitamin = Vitamin.new
     @vitamins = Vitamin.where(user: current_user)
   end
 
