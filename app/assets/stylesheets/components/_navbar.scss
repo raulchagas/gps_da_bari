@@ -1,9 +1,3 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-  // como o background não é mais branco, sugiro remover essa classe, e usar a classe do bootstrap equivalente para o alinhamento
-}
-
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -13,56 +7,22 @@
 }
 
 .nav-bari {
-  border-radius: 23px;
-  // o border-radius pode ser colocado por canto (começa topo esquerdo direção horária), e aí passar 0 para cima e 23px para baixo documentação: https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
-
-  top: -18px;
-  // ajustando o border radius abaixo, não precisa de margem negativa. inclusive, só deve ser usaba para sobreposição de elementos
-
-  height: 86px;
-  // ajustar a altura, já que o elemento vai se deslocar para baixo
-
-
+  border-radius: 0px 0px 23px 23px;
+  height: 70px;
   margin-left: 35px;
   margin-right: 35px;
-
-  background: #98C9A3;
-}
-
-@media(max-width: 580px) {
-  .nav-bari{
-    margin-left: 0px;
-    margin-right: 0px;
-  }
+  background-color: #98C9A3;
 }
 
 .icon-white {
-  // o nome é "icon-white" mas não tem nada branco. o nome da classe deve refletir o que ela representa
-
-  background-color: #98C9A3;
-  text-align: end;
-  width: 25%;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.title-white {
-  // sugestao de nome: font-white, ou usar direto a classe do bootstrap para cor de fonte (text) https://getbootstrap.com/docs/5.2/utilities/colors/#colors
   color: white;
-
-  font-size: 30px;
-  // conforme indicado no HTML, não se redimensiona tamanho de cabeçalho.
 }
 
-.align-itens {
-  //o nome da classe deve refletir o que ela representa. alinhar items onde? sugestão: mt-15
-
-  margin-top: 15px;
+.font-white {
+  color: white;
 }
 
-.dropdown {
-  // o nome da classe deve refletir o que ela representa. sugiro usar a classe do bootstrap para margem https://getbootstrap.com/docs/5.2/utilities/spacing/#margin-and-padding
-  margin-right: 0;
+.dropdown-color {
+  background-color: #98C9A3;
+  border-radius: 5px;
 }
-
-
