@@ -1,9 +1,9 @@
 <div class="container">
-
+<h1> <%= length %></h1>
   <% if @created.blank? %>
     Did you take your vitamin today?
     <%= simple_form_for @vitamin do |f| %>
-      <%= f.date_field :date, value: Date.today  %>
+      <%= f.date_field :date, value: Date.today %>
       <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
       <%= f.submit "Yes!" %>
       <% end %>

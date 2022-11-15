@@ -1,5 +1,5 @@
 <div class="container">
-
+<h1> <%= days %></h1>
   <% @created = @vitamins %>
   <% if @created.empty? %>
     Did you take your vitamin today?
@@ -23,13 +23,16 @@
         <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
         <%= f.submit "Yes!" %>
       <% end %>
-      <% @day = Date.today - 1 %>
+      <% @day = Date.today %>
     <% end %>
     <% @streak = 0 %>
     <% @created = @created.to_a %>
     <% while (@created.pop().date.to_date == @day) do %>
-      <% @streak += 1%>
-      <% @day = @day - 1%>
+      <%  %>
+      <% if @created != Date.today %>
+      <% @streak += 1 %>
+      <% end %>
+      <% @day = @day %>
       <% break if @created.empty? %>
     <% end %>
     <p>Vitamin streak: <%= @streak %></p>
