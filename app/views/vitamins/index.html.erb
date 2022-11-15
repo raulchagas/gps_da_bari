@@ -4,7 +4,7 @@
   <% if @created.empty? %>
     Did you take your vitamin today?
     <%= simple_form_for @vitamin do |f| %>
-      <%= f.input :date, as: :date %>
+      <% f.input :date, as: :date %>
       <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
       <%= f.submit "Yes!" %>
     <% end %>
@@ -19,7 +19,7 @@
     <% else %>
       Did you take your vitamin today?
       <%= simple_form_for @vitamin do |f| %>
-        <%= f.input :date, as: :date %>
+        <% f.input :date, as: :date %>
         <%# <%Não aceita sem colocar a data, mesmo passando no controller%>
         <%= f.submit "Yes!" %>
       <% end %>
