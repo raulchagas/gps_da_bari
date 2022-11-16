@@ -50,8 +50,25 @@ Prescription.create!(
 #   user: @user
 # )
 
+
+Vitamin.create!(
+  date: (Date.today - 10),
+  user: @user
+)
+Vitamin.create!(
+  date: (Date.today - 8),
+  user: @user
+)
+Vitamin.create!(
+  date: (Date.today - 6),
+  user: @user
+)
 Vitamin.create!(
   date: (Date.today - 5),
+  user: @user
+)
+Vitamin.create!(
+  date: (Date.today - 4),
   user: @user
 )
 Vitamin.create!(
@@ -67,9 +84,6 @@ Vitamin.create!(
   user: @user
 )
 
-
-
-
 @vitamins = Vitamin.all
 @vitamins.each do |vitamin|
   puts "#{vitamin.date}"
@@ -81,4 +95,3 @@ puts "#{@user.email}"
 @prescriptions.each do |prescription|
   puts "#{prescription.title} - #{prescription.user.email}"
 end
-
