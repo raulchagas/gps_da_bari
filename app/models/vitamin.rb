@@ -16,7 +16,7 @@ private
 def consecutive_days
   streak = first_day_is_today? ? 1 : 0
   days.each_with_index do |day, index|
-    # break unless first_day_is_today?
+    break unless first_day_is_today?
 
     if days[index + 1] == day.yesterday
       streak += 1
