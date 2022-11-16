@@ -1,6 +1,6 @@
 class VitaminsController < ApplicationController
   def index
-    @vitamins = Vitamin.where(user: current_user)
+    @vitamins = Vitamin.all.order(date: :asc)
     @vitamin = Vitamin.new
   end
 
@@ -24,6 +24,7 @@ class VitaminsController < ApplicationController
     @vitamins = Vitamin.where(user: current_user)
   end
 
+  
   private
 
   def set_vitamin
