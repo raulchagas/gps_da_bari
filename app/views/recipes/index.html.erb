@@ -1,14 +1,14 @@
 <div class="container">
 
-  <div class="mb-3">
+  <div class="mb-3 mt-2">
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control  recipes-search",
         placeholder: "Find a recipe"
       %>
-      <%= submit_tag "Search", class: "btn btn-dark-green mx-2  recipes-search" %>
-      <%= link_to "Clear", recipes_path, class: "btn btn-light-green  recipes-search" %>
+      <%= submit_tag "Search", class: "btn btn-recipe-dark-green mx-2 " %>
+      <%= link_to "Clear", recipes_path, class: "btn btn-recipe-light-green " %>
     <% end %>
   </div>
 
@@ -20,7 +20,7 @@
           <h2><%= recipe.title %></h2>
           <p>Prep time: <%= recipe.prep_time %> min</p>
           <p>Calories: <%= recipe.calories %> kcal</p>
-          <%= link_to "See Details", recipe_path(recipe), class:"btn-light-dark-sm rounded" %>
+          <%= link_to "See Details", recipe_path(recipe), class:"btn-light-gray-sm rounded" %>
         </div>
       </div>
     <% end %>
