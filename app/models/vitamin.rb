@@ -6,12 +6,12 @@ def length
   consecutive_days
 end
 
-  # private
-
 def days
   # @days = @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
   @days = @vitamins.order("created_at DESC").pluck(:date).uniq
 end
+
+private
 
 def consecutive_days
   streak = first_day_is_today? ? 1 : 0
