@@ -44,25 +44,8 @@ Prescription.create!(
   user: @user
 )
 
-# puts "Creating vitamins"
-# Vitamin.create!(
-#   date: Date.today,
-#   user: @user
-# )
+puts "Creating vitamins"
 
-
-Vitamin.create!(
-  date: (Date.today - 10),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 9),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 6),
-  user: @user
-)
 Vitamin.create!(
   date: (Date.today - 5),
   user: @user
@@ -72,7 +55,7 @@ Vitamin.create!(
   user: @user
 )
 Vitamin.create!(
-  date: (Date.today - 3),
+  date: (Date.today - 2),
   user: @user
 )
 Vitamin.create!(
@@ -84,6 +67,12 @@ Vitamin.create!(
 @vitamins.each do |vitamin|
   puts "#{vitamin.date}"
 end
+
+puts "Creating record"
+Vitamin.create!(
+  record: 2,
+  user: @user
+)
 
 puts "#{@user.email}"
 

@@ -11,10 +11,6 @@ def days
   @vitamins.pluck(:date).uniq
 end
 
-def record
-  record = 
-
-end
 private
 
 def consecutive_days
