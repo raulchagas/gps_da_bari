@@ -7,10 +7,14 @@ def length
 end
 
 def days
-  # @days = @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
-  @days = @vitamins.pluck(:date).uniq
+  # @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
+  @vitamins.pluck(:date).uniq
 end
 
+def record
+  record = 
+
+end
 private
 
 def consecutive_days

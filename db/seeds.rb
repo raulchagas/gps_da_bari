@@ -56,7 +56,7 @@ Vitamin.create!(
   user: @user
 )
 Vitamin.create!(
-  date: (Date.today - 8),
+  date: (Date.today - 9),
   user: @user
 )
 Vitamin.create!(
@@ -73,10 +73,6 @@ Vitamin.create!(
 )
 Vitamin.create!(
   date: (Date.today - 3),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 2),
   user: @user
 )
 Vitamin.create!(
