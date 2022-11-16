@@ -1,6 +1,6 @@
 class VitaminsController < ApplicationController
   def index
-    @vitamins = Vitamin.all.order(date: :asc)
+    @vitamins = Vitamin.where(user: current_user)
     @vitamin = Vitamin.new
   end
 
@@ -9,9 +9,9 @@ class VitaminsController < ApplicationController
   end
 
   def create
-    @vitamin = Vitamin.new(vitamin_params)
-    @vitamin.user = current_user
+    @vitamin = Vitamin.new
     @vitamin.date = Date.today
+    @vitamin.user = current_user
     if @vitamin.save
       redirect_to vitamins_path
     else
@@ -19,12 +19,6 @@ class VitaminsController < ApplicationController
     end
   end
 
-  def my_vitamins
-    @vitamin = Vitamin.new
-    @vitamins = Vitamin.where(user: current_user)
-  end
-
-  
   private
 
   def set_vitamin

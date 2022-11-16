@@ -9,14 +9,14 @@ end
   # private
 
 def days
-  @days = @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
-  # @days = @vitamins.order("created_at DESC").pluck(:date).uniq
+  # @days = @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
+  @days = @vitamins.order("created_at DESC").pluck(:date).uniq
 end
 
 def consecutive_days
   streak = first_day_is_today? ? 1 : 0
   days.each_with_index do |day, index|
-    break unless first_day_is_today?
+    # break unless first_day_is_today?
 
     if days[index + 1] == day.yesterday
       streak += 1

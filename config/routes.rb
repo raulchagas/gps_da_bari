@@ -8,5 +8,4 @@ Rails.application.routes.draw do
   resources :vitamins, only: %i[index show new create edit update destroy]
   resources :recipes, only: %i[index show]
   resources :prescriptions, only: %i[index show new create edit update destroy]
-  get "my_vitamins", to: "vitamins#my_vitamins"
 end
