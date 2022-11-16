@@ -8,7 +8,7 @@ end
 
 def days
   # @days = @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
-  @days = @vitamins.order("created_at DESC").pluck(:date).uniq
+  @days = @vitamins.pluck(:date).uniq
 end
 
 private
