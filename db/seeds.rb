@@ -15,7 +15,8 @@ Vitamin.destroy_all
 puts "Creating user"
 @user = User.create!(
   email: "teste@teste",
-  password: "aaaaaa"
+  password: "aaaaaa",
+  vitamin_record: 2
 )
 
 
