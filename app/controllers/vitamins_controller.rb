@@ -12,6 +12,7 @@ class VitaminsController < ApplicationController
     @vitamin = Vitamin.new
     @vitamin.date = Date.today
     @vitamin.user = current_user
+    # @vitamin.record = set_record
     if @vitamin.save
       redirect_to vitamins_path
     else
@@ -19,8 +20,18 @@ class VitaminsController < ApplicationController
     end
   end
 
-  def update
-  end
+  # def edit
+  # end
+
+  # def update
+  #   @vitamin = Vitamin.last
+  #       if @vitamin.update(:record)
+  #         redirect_to vitamins_path
+  #       else
+  #         render :edit, status: :unprocessable_entity
+  #       end
+  #   end
+  # end
 
   private
 

@@ -48,31 +48,25 @@ puts "Creating vitamins"
 
 Vitamin.create!(
   date: (Date.today - 5),
-  user: @user
+  user: @user,
 )
 Vitamin.create!(
   date: (Date.today - 4),
-  user: @user
+  user: @user,
 )
 Vitamin.create!(
   date: (Date.today - 2),
-  user: @user
+  user: @user,
 )
 Vitamin.create!(
   date: (Date.today - 1),
-  user: @user
+  user: @user,
 )
 
 @vitamins = Vitamin.all
 @vitamins.each do |vitamin|
   puts "#{vitamin.date}"
 end
-
-puts "Creating record"
-Vitamin.create!(
-  record: 2,
-  user: @user
-)
 
 puts "#{@user.email}"
 

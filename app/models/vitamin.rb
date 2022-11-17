@@ -11,6 +11,10 @@ def days
   @vitamins.pluck(:date).uniq
 end
 
+def set_record
+  consecutive_days > @vitamins.maximum(:record) ? consecutive_days : @vitamins.maximum(:record)
+end
+
 private
 
 def consecutive_days

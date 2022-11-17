@@ -7,7 +7,7 @@
       <%= f.submit "Yes!" %>
     <% end %>
   <% else %>
-    <% if @created.last.date.to_date == Date.today%>
+    <% if days.first == Date.today %>
       <% @day = Date.today %>
       You already took your vitamin today!
     <% else %>
@@ -16,7 +16,9 @@
         <%= f.submit "Yes!" %>
       <% end %>
     <% end %>
-    <p>Vitamin streak: <%= length %></p>
+    <p>Vitamin streak record: <%= @vitamins.maximum(:record) %> </p>
+      <p>set record: <%= set_record %> </p>
+    <p>length: <%= length %></p>
   <% end %>
   <div class="calendar">
     <%= month_calendar do |date| %>
