@@ -14,16 +14,16 @@
 
   <div class="recipes-grid">
     <% @recipes.each do |recipe|%>
+      <% recipe = recipe["recipe"]%>
       <div class="card-recipe recipe-width rounded">
-        <img src="https://source.unsplash.com/random/300×150/?<%= recipe.title.gsub(" ","-")%>">
+        <img src=<%= recipe["image"]%>>
         <div class="card-recipe-infos">
-          <h2><%= recipe.title %></h2>
-          <p>Prep time: <%= recipe.prep_time %> min</p>
-          <p>Calories: <%= recipe.calories %> kcal</p>
-          <%= link_to "See Details", recipe_path(recipe), class:"btn-light-gray-sm rounded" %>
+          <h2><%= recipe["label"] %></h2>
+          <p>Prep time: <%= number_to_human(recipe["totalTime"], precision: 0) %> min</p>
+          <p>Calories: <%= number_to_human(recipe["calories"], precision: 0) %> kcal</p>
+          <% recipe_id = recipe["uri"].scan(/(?<=_).*/)%>
+          <%= link_to "See Details", recipe_path(recipe_id), class:"btn-light-grey-sm rounded"%>
         </div>
       </div>
     <% end %>
-  </div>
-
-</div>
+  </div>>

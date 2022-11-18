@@ -1,6 +1,80 @@
-    <div class="card">
-      <div class="card-title">Recipe name: <%= @recipe.title %></div>
-      <span>Description: <%= @recipe.description %></span>
-      <span>Prep time: <%= @recipe.prep_time %> min</span>
-      <span><%= @recipe.calories %> calories</span>
-    </div>
+<div class="container">
+  <div class="card">
+    <%= @recipe["label"] %>
+  </div>
+
+  <div class="card">
+    <%= @recipe["url"] %>
+  </div>
+
+  <div class="card">
+    <img src="<%= @recipe["images"]["REGULAR"]["url"] %>" alt="">
+  </div>
+
+  <div class="card">
+    <%= @recipe["dietLabels"] %>
+  </div>
+
+  <div class="card">
+    <%= @recipe["healthLabels"] %>
+  </div>
+
+  <div class="card">
+    <%= @recipe["cautions"] %>
+  </div>
+
+  <div class="card">
+    <%= @recipe["ingredientLines"].count%> Ingredients
+  </div>
+
+  <div class="card">
+    <% @recipe["ingredientLines"].each do |ingredient|%>
+      <p><%= ingredient%></p>
+    <%end %>
+  </div>
+
+  <div class="card">
+    Nutrition
+    <%= @recipe["calories"]%> CALORIES / SERVING
+  </div>
+
+  <div class="card">
+    <%= @recipe["glycemicIndex"] %>
+  </div>
+
+  <div class="card">
+    Meal type: <% @recipe["mealType"].each do|meal_type| %>
+      <%= meal_type.capitalize %>
+    <% end %>
+  </div>
+
+  <div class="card">
+    Dish type: <% @recipe["dishType"].each do|dish_type| %>
+      <%= dish_type.capitalize %>
+    <% end %>
+  </div>
+
+  <div class="card">
+    Instructions: <% @recipe["instructions"] %>
+  </div>
+
+
+  <div class="card">
+    tags: <%= @recipe["tags"] %>
+  </div>
+
+  <div class="card">
+    Total Nutrients: <% @recipe["totalNutrients"].each do |nutrient| %>
+      <p><%= nutrient %></p>
+    <% end %>
+  </div>
+
+  <div class="card">
+    Digest:<%= @recipe["digest"].each do |nutrient| %>
+      <p><%= nutrient["label"] %></p>
+      <p><%= nutrient["tag"] %></p>
+      <p><%= nutrient["schemaOrgTag"] %></p>
+    <% end %>
+  </div>
+
+</div>

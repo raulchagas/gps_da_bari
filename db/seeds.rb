@@ -6,21 +6,25 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # puts "Cleaning database"
-# Recipe.destroy_all
+Recipe.destroy_all
 
-@r = HTTParty.get("https://api.edamam.com/api/recipes/v2?type=public&app_id=6b0dad4e&app_key=f84be2e85d0919a734759ee45945a44d&diet=high-protein&health=vegetarian&random=true")
+@r = HTTParty.get("https://api.edamam.com/api/recipes/v2?type=public&app_id=6b0dad4e&app_key=%20f84be2e85d0919a734759ee45945a44d%09&diet=balanced")
 @r["hits"].each do |recipe|
   puts recipe["recipe"]["label"]
-  Recipe.create(
+  Recipe.create!(
     title: recipe["recipe"]["label"],
     description: Faker::Food.description,
     calories: recipe["recipe"]["calories"],
     prep_time: recipe["recipe"]["totalTime"],
-    ranking: rand(0..5)
+    ranking: rand(0..5),
+    photo_url: recipe["recipe"]["image"]
   )
 end
 
-
+@recipes = Recipe.all
+@recipes.each do |recipe|
+  puts recipe.photo_url
+end
 # Prescription.destroy_all
 # User.destroy_all
 # Vitamin.destroy_all
