@@ -5,8 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# puts "Cleaning database"
+puts "Cleaning database"
 Recipe.destroy_all
+User.destroy_all
+Prescription.destroy_all
+
 
 puts "Creating user"
 @user = User.create!(
@@ -72,4 +75,3 @@ end
 @prescriptions.each do |prescription|
   puts "#{prescription.title} - #{prescription.user.email}"
 end
-
