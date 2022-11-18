@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  include Streakable
   has_many :goals, dependent: :destroy
   has_many :body_fat, dependent: :destroy
   has_many :prescriptions, dependent: :destroy
@@ -22,13 +23,13 @@ class User < ApplicationRecord
     self.update(vitamin_record: record)
   end
 
-  private
+  # private
 
   def consecutive_days
-    streak = first_day_is_today? ? 1 : 0
-    days.each_with_index do |day, index|
-      break unless first_day_is_today?
 
+    return 0 unless days.first == Date.today || days.first == Date.yesterday
+    streak = 1
+    days.each_with_index do |day, index|
       if days[index + 1] == day.yesterday
         streak += 1
       else
@@ -36,9 +37,5 @@ class User < ApplicationRecord
       end
     end
     streak
-  end
-
-  def first_day_is_today?
-    days.first == Date.today
   end
 end

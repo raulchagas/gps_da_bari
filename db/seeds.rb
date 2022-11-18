@@ -48,6 +48,11 @@ Prescription.create!(
 puts "Creating vitamins"
 
 Vitamin.create!(
+  date: (Date.today - 6),
+  user: @user,
+)
+
+Vitamin.create!(
   date: (Date.today - 5),
   user: @user,
 )

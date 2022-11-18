@@ -17,7 +17,7 @@
       <% end %>
     <% end %>
     <p>Vitamin streak record: <%= current_user.vitamin_record %> </p>
-      <p>set record: <%= current_user %> </p>
+      <p>Current streak: <%= current_user.consecutive_days %> </p>
     <% end %>
   <div class="calendar">
     <%= month_calendar do |date| %>
