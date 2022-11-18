@@ -1,7 +1,9 @@
 class VitaminsController < ApplicationController
+
   def index
-    @vitamins = Vitamin.all.order(date: :asc)
+    @vitamins = Vitamin.where(user: current_user).order(date: :desc)
     @vitamin = Vitamin.new
+    current_user.reload
   end
 
   def new
@@ -9,15 +11,29 @@ class VitaminsController < ApplicationController
   end
 
   def create
-    @vitamin = Vitamin.new(vitamin_params)
-    @vitamin.user = current_user
+    @vitamin = Vitamin.new
     @vitamin.date = Date.today
+    @vitamin.user = current_user
     if @vitamin.save
+      current_user.update_vitamin_streak
       redirect_to vitamins_path
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+  # def edit
+  # end
+
+  # def update
+  #   @vitamin = Vitamin.last
+  #       if @vitamin.update(:record)
+  #         redirect_to vitamins_path
+  #       else
+  #         render :edit, status: :unprocessable_entity
+  #       end
+  #   end
+  # end
 
   private
 
