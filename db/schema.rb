@@ -84,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_230601) do
     t.integer "ranking"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,6 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_230601) do
     t.float "height"
     t.float "weight_before_surgery"
     t.float "target_weight"
+    t.integer "vitamin_record"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

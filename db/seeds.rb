@@ -7,32 +7,22 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning database"
 Recipe.destroy_all
-Prescription.destroy_all
 User.destroy_all
-Vitamin.destroy_all
+Prescription.destroy_all
 
 
 puts "Creating user"
 @user = User.create!(
   email: "teste@teste",
-  password: "aaaaaa"
+  password: "aaaaaa",
+  vitamin_record: 1
 )
 
-
-
-puts "Creating recipes"
-times = [15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
-50.times do
-  Recipe.create!(
-    title: Faker::Food.dish,
-    description: Faker::Food.description,
-    calories: rand(10..1000),
-    prep_time: times.sample,
-    ranking: rand(0..5)
-  )
-end
-
-
+@user2 = User.create!(
+  email: "teste2@teste",
+  password: "aaaaaa",
+  vitamin_record: 4
+)
 
 puts "Creating prescription"
 Prescription.create!(
@@ -44,52 +34,42 @@ Prescription.create!(
   user: @user
 )
 
-# puts "Creating vitamins"
-# Vitamin.create!(
-#   date: Date.today,
-#   user: @user
-# )
+puts "Creating vitamins"
 
-
-Vitamin.create!(
-  date: (Date.today - 10),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 8),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 6),
-  user: @user
-)
 Vitamin.create!(
   date: (Date.today - 5),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 4),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 3),
-  user: @user
-)
-Vitamin.create!(
-  date: (Date.today - 2),
-  user: @user
+  user: @user,
 )
 Vitamin.create!(
   date: (Date.today - 1),
-  user: @user
+  user: @user,
+)
+
+Vitamin.create!(
+  date: (Date.today - 6),
+  user: @user2,
+)
+Vitamin.create!(
+  date: (Date.today - 5),
+  user: @user2,
+)
+Vitamin.create!(
+  date: (Date.today - 4),
+  user: @user2,
+)
+Vitamin.create!(
+  date: (Date.today - 3),
+  user: @user2,
+)
+Vitamin.create!(
+  date: (Date.today - 1),
+  user: @user2,
 )
 
 @vitamins = Vitamin.all
 @vitamins.each do |vitamin|
   puts "#{vitamin.date}"
 end
-
-puts "#{@user.email}"
 
 @prescriptions = Prescription.all
 @prescriptions.each do |prescription|
