@@ -1,5 +1,5 @@
 <div class="container mt-3">
-<h2> <%= days %></h2>
+<h2> <%= current_user.days %></h2>
   <% @created = @vitamins %>
   <% if @created.empty? %>
     Did you take your vitamin today?
@@ -7,7 +7,7 @@
       <%= f.submit "Yes!" %>
     <% end %>
   <% else %>
-    <% if days.first == Date.today %>
+    <% if current_user.days.first == Date.today %>
       <% @day = Date.today %>
       You already took your vitamin today!
     <% else %>
@@ -16,13 +16,12 @@
         <%= f.submit "Yes!" %>
       <% end %>
     <% end %>
-    <p>Vitamin streak record: <%= @vitamins.maximum(:record) %> </p>
-      <p>set record: <%= set_record %> </p>
-    <p>length: <%= length %></p>
-  <% end %>
+    <p>Vitamin streak record: <%= current_user.vitamin_record %> </p>
+      <p>set record: <%= current_user %> </p>
+    <% end %>
   <div class="calendar">
     <%= month_calendar do |date| %>
-      <% if days.include?(date) %>
+      <% if current_user.days.include?(date) %>
         <div class="blue"><%= date.day %></div>
       <% else %>
         <%= date.day %>
