@@ -5,11 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "Cleaning database"
+# puts "Cleaning database"
 Recipe.destroy_all
-Prescription.destroy_all
-User.destroy_all
-Vitamin.destroy_all
 
 puts "Creating user"
 @user = User.create!(
@@ -23,18 +20,6 @@ puts "Creating user"
   password: "aaaaaa",
   vitamin_record: 4
 )
-
-puts "Creating recipes"
-times = [15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
-50.times do
-  Recipe.create!(
-    title: Faker::Food.dish,
-    description: Faker::Food.description,
-    calories: rand(10..1000),
-    prep_time: times.sample,
-    ranking: rand(0..5)
-  )
-end
 
 puts "Creating prescription"
 Prescription.create!(
@@ -83,9 +68,8 @@ Vitamin.create!(
   puts "#{vitamin.date}"
 end
 
-puts "#{@user.email}"
-
 @prescriptions = Prescription.all
 @prescriptions.each do |prescription|
   puts "#{prescription.title} - #{prescription.user.email}"
 end
+

@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :body_fats, only: %i[index show new create]
   resources :vitamins, only: %i[index show new create edit update destroy]
   resources :recipes, only: %i[index show]
+  # get '/recipes/:recipe', to: 'recipes#show', as: 'recipe'
   resources :prescriptions, only: %i[index show new create edit update destroy]
+
 end

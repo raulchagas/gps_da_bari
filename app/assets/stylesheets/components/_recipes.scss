@@ -5,6 +5,7 @@
   box-shadow: 2px 2px 15px #98C9A3;
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .card-recipe img {
@@ -40,7 +41,7 @@
 .recipes-grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-gap: 25px;
 }
 
 @media(max-width: 992px) {
@@ -55,20 +56,22 @@
   }
 }
 
-.btn-dark-green{
+.btn-recipe-dark-green{
   background-color: #425F48;
   opacity:0.8;
   color: white;
-  min-width: fit-content;
+  width: 80px;
+  text-align: center;
 }
 
-.btn-light-green{
+.btn-recipe-light-green{
   background-color: #A4C3B2;
   opacity:0.8;
-  min-width: fit-content;
+  width: 80px;
+  text-align: center;
 }
 
-.btn-light-dark-sm{
+.btn-light-grey-sm{
   background-color:rgb(217, 208, 208);
   color: black;
   text-decoration: none;
