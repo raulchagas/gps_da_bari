@@ -1,0 +1,38 @@
+.recipe-container{
+  max-width: 800px;
+}
+.recipe-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+// .recipe-pad {
+//   display: flex;
+//   align-items: center;
+// }
+
+.pad-left{
+
+}
+.pad-right{
+
+}
+
+.secondary-text{
+  font-size: 14px;
+  font-family: 'Arial Narrow';
+}
+
+.nutrient-label{
+  position: relative;
+  width: 60%;
+}
+
+.nutrient-units{
+  position: relative;
+  width: 20%;
+  text-align: end;
+}
+
+.small-text{
+  font-size: 12px;
+}
