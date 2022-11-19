@@ -1,7 +1,9 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: %i[show edit update destroy]
   def index
-    @goals = Goal.all
+    @goals = Goal::DEFAULT_GOALS
+    @goal = Goal.new
+    @user = current_user
   end
 
   def show
@@ -12,12 +14,18 @@ class GoalsController < ApplicationController
   end
 
   def create
-    @goal = Goal.new(goal_params)
-    @goal.user = current_user
+    if params[:goal][:description].present?
+        params[:goal][:description].shift
+        params[:goal][:description].each do |description|
+        # @goal.description = description
+        # @goal.user = current_user
+        @goal = Goal.create(description: description, user: current_user)
+        end
+    end
     if @goal.save
       redirect_to goals_path
     else
-      redender :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -39,9 +47,9 @@ class GoalsController < ApplicationController
 
   private
 
-  def goal_params
-    params.require(:goal).permit(:description, :status, :user)
-  end
+  # def goal_params
+  #   params.require(:goal).permit(:description, :status, :user)
+  # end
 
   def set_goal
     @goal = Goal.find(params[:id])

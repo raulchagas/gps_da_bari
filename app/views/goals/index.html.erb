@@ -1,4 +1,13 @@
-<h1>All goals for selection</h1>
-<% @goals.each do |goal| %>
-  <p> <%=  goal.description %></p>
-<% end %>
+<div class="container">
+  <h2 class="text-center font-style">Chose your goal</h2>
+  <div class="container">
+    <%= simple_form_for @goal do |f| %>
+      <%= f.input :description, label: "You can select more than one!",
+            as: :check_boxes,
+            item_wrapper_class: 'tag-item',
+            input_html: {class: 'tag-selector'},
+            collection: Goal::DEFAULT_GOALS %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
