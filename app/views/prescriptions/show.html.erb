@@ -1,8 +1,10 @@
-<div class="card">
-  <div class="card-title">Prescription name: <%= @prescription.title %></div>
-  <%= link_to "edit", edit_prescription_path(@prescription) %>
-  <%= link_to "Delete",
-    prescription_path(@prescription),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "btn-yellow-lg"
-  %>
+<div class="d-flex justify-content-center" style="margin-top: 80px">
+  <div class="card">
+    <div class="card-title d-flex justify-content-center">Prescription name: <%= @prescription.title %></div>
+    <%= link_to "edit", edit_prescription_path(@prescription), :class => "btn-green" %>
+    <%= link_to "Delete",
+      prescription_path(@prescription),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class => "btn-green"
+    %>
+  </div>
 </div>
