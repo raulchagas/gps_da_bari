@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :weights, dependent: :destroy
   has_many :body_fats, dependent: :destroy
   has_many :vitamins, dependent: :destroy
+  has_one_attached :avatar
 
   def days
     # @vitamins.order("created_at DESC").pluck(:created_at).map(&:to_date).uniq
