@@ -2,12 +2,8 @@
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon nav-bari">
     <div class="container-fluid">
       <div class="navbar-brand">
-        <% if user_signed_in? %>
-          <% if current_user.avatar.attached? %>
-            <%= cl_image_tag current_user.avatar.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag "user.png" %>
-          <% end %>
+        <% if user_signed_in? && current_user&.avatar&.attached? %>
+          <%= cl_image_tag current_user.avatar.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag "user.png" %>
         <% end%>
