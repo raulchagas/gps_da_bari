@@ -5,4 +5,8 @@ class Goal < ApplicationRecord
                     "Get pregnant", "Live longer", "Reduce pain my knees", "No longer have sleep apnoea", "No longer have diabetes"
                   ]
   belongs_to :user
+
+  def done?
+    status == true
+  end
 end
