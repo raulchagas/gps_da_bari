@@ -1,28 +1,23 @@
 <div class="container">
   <h2 class="text-center font-style">Personal Goals</h2>
-
   <% @goals.each do |goal| %>
     <div class="row g-3 d-flex justify-content-center">
-    <div class="col-md-6">
-  <ul><%= button_to goal.description, done_path(id: goal.id), method: :patch, class: "tag-card"  %></ul>
-      </div>
-    </div>
-<% end %>
-</div>
-
-<%
-=begin %>
-<div class="row g-3 d-flex justify-content-center">
-    <div class="col-md-6">
-      <%= simple_form_for @goal do |f| %>
-        <%= f.input :description, label: "You can select more than one!",
-            as: :check_boxes,
-            item_wrapper_class: "tag-item",
-            input_html: {class: "tag-selector"},
-            collection: Goal::DEFAULT_GOALS %>
-    <%= f.button :submit, "Save", class: "btn btn-dark-green" %>
+      <div class="col-md-6">
+        <% unless goal.done? %>
+          <ul><%= button_to goal.description, done_path(id: goal.id), method: :patch, class: "tag-card"  %></ul>
+        <% end %>
       </div>
     </div>
   <% end %>
-<%
-=end %>
+  <h2 class="text-center font-style">Achievements</h2>
+  <% @goals.each do |goal| %>
+    <div class="row g-3 d-flex justify-content-center">
+      <div class="col-md-6">
+        <% if goal.done? %>
+          <ul><%= button_to goal.description, done_path(id: goal.id), method: :patch, class: "tag-card"  %></ul>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
