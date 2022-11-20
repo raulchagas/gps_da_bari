@@ -1,12 +1,9 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: %i[show edit update destroy]
+  # before_action :set_goal, only: %i[show edit update destroy]
   def index
     @goals = Goal::DEFAULT_GOALS
     @goal = Goal.new
     @user = current_user
-  end
-
-  def show
   end
 
   def new
@@ -22,11 +19,16 @@ class GoalsController < ApplicationController
         @goal = Goal.create(description: description, user: current_user)
         end
     end
+
     if @goal.save
-      redirect_to goals_path
+      redirect_to my_goals_path
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def my_goals
+    @goals = Goal.where(user: current_user)
   end
 
   def edit
