@@ -1,0 +1,7 @@
+.grid-2-1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 25px;
+}
+
+.form-inline div { display: inline-block }

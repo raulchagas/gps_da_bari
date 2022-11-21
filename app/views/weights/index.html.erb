@@ -1,3 +1,35 @@
-<% @weights.each do |weight| %>
-  <p> <%=  weight.value %></p>
-<% end %>
+<div class="container">
+  <div class="grid-2-1">
+
+      <%= simple_form_for @weight, :html => {class: 'form-inline' } do |f| %>
+        <div><%= f.input :value,  label: 'add weight' %></div>
+        <div><%= f.submit "Add" %></div>
+      <% end %>
+
+    <div class="d-flex">
+      <div>
+        <%= @weights.first.value %>
+        INITIAL
+      </div>
+      <div>
+        <%= @weights.last.value%>
+        FINAL
+      </div>
+      <div>
+        <%=  (@weights.last.value - @weights.first.value) %>
+        CHANGE
+      </div>
+    </div>
+
+  </div>
+
+    <% @weigts_values = []%>
+    <% @weights.each do |weight| %>
+      <% @weigts_values << weight.value %>
+      <% @weigts_values.min %>
+    <% end %>
+
+    <div>
+      <%= line_chart Weight.pluck(:date, :value), xtitle: "Date", ytitle: "Weight", min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"] %>
+    </div>
+</div>
