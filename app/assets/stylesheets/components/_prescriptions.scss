@@ -1,9 +1,23 @@
+.prescription-style {
+  margin-top: 80px;
+}
+
+.prescription-font {
+  color: #3d5048;
+}
+
 .card-prescription-style {
   background-color: #ffffff;
   color: #3d5048;
   padding: 10px;
+  border-radius: 15px;
+  border-color: none;
 }
 
 .prescription-list {
   padding: 0;
+}
+
+.prescription-icons {
+  color: #3d5048;
 }
