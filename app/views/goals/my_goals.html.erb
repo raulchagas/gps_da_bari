@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="text-center font-style mb-3">
+    <h2>Personal Goals</h2>
+    <span>click to set as achieved!</span>
+  </div>
+  <% @goals.each do |goal| %>
+    <div class="row g-3 d-flex justify-content-center">
+      <div class="col-md-6">
+        <% unless goal.done? %>
+          <%= button_to goal.description, done_path(id: goal.id), method: :patch, class: "tag-card"  %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+   <div class="text-center font-style mb-3">
+  <h2 class="text-center font-style">Achievements</h2>
+      <span>click to remove from list</span>
+  </div>
+  <% @goals.each do |goal| %>
+    <div class="row g-3 d-flex justify-content-center">
+      <div class="col-md-6">
+        <% if goal.done? %>
+          <%= button_to goal.description, goal_path(id: goal.id), method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "tag-card" %>
+        <% end %>
+      </div>
+      </div>
+  <% end %>
+            <%= button_to "Choose more goals", my_goals_path, class: "btn btn-dark-green mt-4 mb-4" %>
+</div>
+
+<%# <i class="fa-solid fa-xmark small"></i> %>
