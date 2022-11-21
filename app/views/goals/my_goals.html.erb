@@ -14,10 +14,13 @@
     <div class="row g-3 d-flex justify-content-center">
       <div class="col-md-6">
         <% if goal.done? %>
-          <ul><%= button_to goal.description, done_path(id: goal.id), method: :patch, class: "tag-card"  %></ul>
+<%= button_to "delete", goal_path(id: goal.id), class:"btn btn-cancel", method: :delete, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+          <ul><%= button_to goal.description, done_path(id: goal.id), method: :patch, class: "tag-card" %></ul>
         <% end %>
       </div>
     </div>
   <% end %>
 
 </div>
+
+<%# <i class="fa-solid fa-xmark small"></i> %>

@@ -53,8 +53,9 @@ class GoalsController < ApplicationController
   end
 
   def destroy
+    @goal = Goal.find(params[:id])
     @goal.destroy
-    redirect_to goals_path, status: :see_other
+    redirect_to my_goals_path
   end
 
   private
