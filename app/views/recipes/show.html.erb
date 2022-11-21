@@ -1,71 +1,127 @@
 <div class="container recipe-container">
 
-  <div class="recipe-pad recipe-grid">
+  <div class="mb-3 mt-2">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control  recipes-search",
+        placeholder: "Find a recipe"
+      %>
+      <%= submit_tag "Search", class: "btn btn-recipe-dark-green mx-2 " %>
+      <%= link_to "Clear", recipes_path, class: "btn btn-recipe-light-green " %>
+    <% end %>
+  </div>
 
-    <div>
-      <img src="<%= @recipe["images"]["REGULAR"]["url"] %>" style="width: 300px; length: 300px;">
-    </div>
+  
+  <div class="recipe-grid mt-3 shadow p-3 rounded">
+
+
+      <img src="<%= @recipe["images"]["REGULAR"]["url"] %>" style="width: 300px; length: 300px; margin-inline: auto;">
+
+
 
     <div class="pad-right">
-      <div>
-        <h3><%= @recipe["label"] %></h3>
+
+      <div class="recipe-title mb-2">
+        <%= @recipe["label"] %>
       </div>
-      <div>
-        <span class="small-text">See full recipe on: <a href="<%= @recipe["url"] %>" target="_blank" ><%= @recipe["source"] %></a></span>
-      </div>
-      <div>
-        Diet types:<%= @recipe["dietLabels"].sort.join(", ") %>
-      </div>
-      <div>
-        Diet types: <%= @recipe["healthLabels"].sort.join(", ") %>
-      </div>
-      <div>
-        Contains: <%= @recipe["cautions"].sort.join(", ") %>
-      </div>
-      <div>
-        Meal type: <% @recipe["mealType"].each do|meal_type| %>
-          <%= meal_type.capitalize %>
-        <% end %>
+      <div class="small-text text-center mb-4">
+        See full recipe on: <a href="<%= @recipe["url"] %>" target="_blank" ><%= @recipe["source"] %></a>
       </div>
 
-      <div>
-        Dish type: <% @recipe["dishType"].each do|dish_type| %>
-          <%= dish_type.capitalize %>
-        <% end %>
-      </div>
+      <% if @recipe["dietLabels"].present?%>
+        <div class="recipe-tags">
+          Diet types: <span class="italic"><%= @recipe["dietLabels"].sort.join(", ") %></span>
+        </div>
+      <% end %>
+
+      <% if  @recipe["healthLabels"].present?%>
+        <div class="recipe-tags">
+          Health labels: <span class="italic"><%= @recipe["healthLabels"].sort.join(", ") %></span>
+        </div>
+      <% end %>
+
+      <% if @recipe["cautions"].present?%>
+        <div class="recipe-tags">
+          Contains: <span class="italic"><%= @recipe["cautions"].sort.join(", ") %></span>
+        </div>
+      <% end %>
+
+      <% if @recipe["mealType"].present?%>
+        <div class="recipe-tags">
+          Meal type: <% @recipe["mealType"].each do|meal_type| %>
+            <span class="italic"><%= meal_type.capitalize %></span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @recipe["dishType"].present?%>
+        <div class="recipe-tags">
+          Dish type: <% @recipe["dishType"].each do|dish_type| %>
+          <span class="italic"><%= dish_type.capitalize %></span>
+          <% end %>
+        </div>
+      <% end %>
 
     </div>
   </div>
 
-  <div class="recipe-pad recipe-grid">
+
+  <div class="recipe-grid mt-3 shadow p-3 rounded">
     <div calss="pad-left">
-      <div>
+      <div id="ingredients-count" class="margin-separator">
         <%= @recipe["ingredientLines"].count%> Ingredients
       </div>
 
-      <div>
-        Ingredients: <% @recipe["ingredientLines"].each do |ingredient|%>
-          <p><%= ingredient%></p>
+      <div class="margin-separator">
+        <% @recipe["ingredientLines"].each do |ingredient|%>
+          <p class="ingredients"><%= ingredient%></p>
         <%end %>
       </div>
-      <div>
-        Instructions: <% @recipe["instructions"] %>
-      </div>
+
+      <% if @recipe["instructions"].present? %>
+        <div class="recipe-tags margin-separator">
+          Instructions: <span class="italic"><% @recipe["instructions"] %></span>
+        </div>
+      <% end %>
     </div>
 
-    <div class="pad-right">
+    <div class="pad-right pe-4">
 
-      <div>
-        Nutrition
-        <%= @recipe["calories"]%> CALORIES / SERVING
+      <p id="ingredients-count" class="margin-separator">Nutrition</p>
+      <div class="d-flex margin-separator">
+        <div class="recipe-factors me-5">
+          <span class="mb-0">
+            <% if @recipe["calories"] > 4000 %>
+              <%= number_with_precision((@recipe["calories"] / 5 ), precision: 0) %>
+            <% elsif @recipe["calories"] > 3000 %>
+              <%= number_with_precision((@recipe["calories"] / 4 ), precision: 0) %>
+            <% elsif @recipe["calories"] > 2000 %>
+              <%= number_with_precision((@recipe["calories"] / 3 ), precision: 0)  %>
+            <% elsif @recipe["calories"] > 1000 %>
+              <%= number_with_precision((@recipe["calories"] / 2 ), precision: 0) %>
+            <% else %>
+              <%= number_with_precision(@recipe["calories"], precision: 0) %>
+            <% end %>
+          </span><br>
+          <span class="secondary-text mt-0"> calories</span>
+        </div>
+
+        <div class="recipe-factors me-5">
+          <span class="mb-0"><%= number_with_precision(@recipe["totalTime"], precision: 0) %></span><br>
+          <span class="secondary-text mt-0"> minutes</span>
+        </div>
+
+        <% if @recipe["glycemicIndex"].present? %>
+          <div class="recipe-factors">
+            <span class="mb-0"><%= @recipe["glycemicIndex"] %> 40%%</span><br>
+            <span class="secondary-text mt-0">glycemic index</span>
+          </div>
+        <% end %>
       </div>
 
       <div>
-        GI: <%= @recipe["glycemicIndex"] %>
-      </div>
-
-      <div>
-        Digest:<% @recipe["digest"].each do |nutrient| %>
+        <% @recipe["digest"].each do |nutrient| %>
 
           <div class="my-2">
             <div class="d-flex secondary-text">
@@ -92,4 +148,5 @@
 
 
   </div>
+
 </div>
