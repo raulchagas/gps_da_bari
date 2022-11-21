@@ -34,6 +34,18 @@ Prescription.create!(
   user: @user
 )
 
+weights = [75,75,78,78,78,85,85,86,90,90,95,95,120,120,150]
+@datey = Date.today
+puts "Creating weights"
+weights.each do |w|
+  @datey = @datey -1
+  Weight.create!(
+    value: w,
+    user: @user,
+    date: @datey
+  )
+end
+
 puts "Creating vitamins"
 
 Vitamin.create!(
