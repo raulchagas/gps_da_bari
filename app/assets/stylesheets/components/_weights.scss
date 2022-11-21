@@ -1,7 +1,40 @@
+.weight-container{
+  width: 50%;
+}
 .grid-2-1{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 25px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-.form-inline div { display: inline-block }
+@media(max-width: 1200px) {
+  .weight-container{
+    width: 90%;
+  }
+  .grid-2-1{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+.form-inline div {
+  display: inline-block;
+  width: 100px;
+  align-items: center;
+  font-size: 12px;
+  text-align: center;
+}
+
+.both-margin-separator{
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid #D9D9D9;
+  border-top: 1px solid #D9D9D9;
+  width: fit-content;
+}
