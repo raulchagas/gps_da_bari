@@ -44,15 +44,27 @@
   grid-gap: 25px;
 }
 
-@media(max-width: 992px) {
+@media(max-width: 1200px) {
   .recipes-grid {
     grid-template-columns: 1fr 1fr;
+  }
+  .card-recipe {
+    margin-bottom: 10px;
+  }
+  h2{
+    font-size: 14px !important;
   }
 }
 
 @media(max-width: 768px) {
   .recipes-grid {
     grid-template-columns: 1fr;
+  }
+  .card-recipe {
+    margin-bottom: 2px;
+  }
+  h2{
+    font-size: 14px !important;
   }
 }
 
