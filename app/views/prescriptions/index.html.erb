@@ -1,16 +1,16 @@
  <h1 class="container d-flex justify-content-center prescription-style">
-  <%= link_to "Add new prescription", new_prescription_path, class: "prescription-font" %>
+  <%= link_to "Add new prescription", new_prescription_path, class: "prescription-link" %>
 </h1>
 <div class="container">
   <div class="row mt-5">
     <% @prescriptions.each do |prescription| %>
       <div class="col-md-6">
         <div class="card card-prescription-style mb-3 align-items-center">
-          <%= link_to "", prescription_path(prescription), class: "fa-solid fa-magnifying-glass d-flex align-self-end prescription-icons" %>
+          <%= link_to "", prescription_path(prescription), class: "fa-solid fa-magnifying-glass d-flex align-self-end prescription-icon" %>
           <h2><strong><%= prescription.title%></strong></h2>
           <%= link_to "",
             prescription_path(prescription),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash d-flex align-self-end prescription-icons"
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash d-flex align-self-end prescription-icon"
             %>
         </div>
       </div>
