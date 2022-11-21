@@ -1,9 +1,13 @@
 <div class="container-fluid">
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon nav-bari">
     <div class="container-fluid">
-      <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "user.png" %>
-      <% end %>
+      <div class="navbar-brand">
+        <% if user_signed_in? && current_user&.avatar&.attached? %>
+          <%= cl_image_tag current_user.avatar.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% else %>
+          <%= image_tag "user.png" %>
+        <% end%>
+      </div>
       <h1 class="font-white">Hello user</h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa-solid fa-bars icon-white"></span>

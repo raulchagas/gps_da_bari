@@ -46,11 +46,14 @@
                   autofocus: true,
                   input_html: { autocomplete: "target-weight" } %>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
           <%= f.input :email,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :avatar, as: :file %>
         </div>
         <div class="col-md-6">
           <%= f.input :password,
