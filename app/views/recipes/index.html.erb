@@ -18,7 +18,7 @@
       <div class="card-recipe recipe-width rounded">
         <img src=<%= recipe["image"]%>>
         <div class="card-recipe-infos">
-          <h2><%= recipe["label"] %></h2>
+          <h2 class="recipe-h2"><%= recipe["label"] %></h2>
           <p>Prep time: <%= number_with_precision(recipe["totalTime"], precision: 0) %> min</p>
           <p>Calories:
             <% if recipe["calories"] > 4000 %>
