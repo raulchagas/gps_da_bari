@@ -1,5 +1,5 @@
 <div class="container weight-container">
-  <div class="grid-2-1 green-shadow-l px-3">
+  <div class="grid-2-1 green-shadow-l px-3 rounded-l">
 
       <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
         <div><%= f.input :value,  label: 'add weight' %></div>
@@ -38,7 +38,7 @@
       <% @weigts_values.min %>
     <% end %>
 
-    <div class="green-shadow-l p-3">
+    <div class="green-shadow-l p-3 rounded-l">
       <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"] %>
     </div>
 

@@ -11,10 +11,21 @@
   </head>
 
   <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
   </body>
+  <footer>
+    <div class="footer" style="background-color: #98C9A3; height: 60px;">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class= "btn-home rounded-circle">
+          <%= image_tag("home.png", width: 40, height: 40)%>
+        </div>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
 </html>
-
-
