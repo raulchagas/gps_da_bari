@@ -350,3 +350,10 @@ body {
 @media only screen and (max-width: 990px){
     .progress{ margin-bottom: 20px; }
 }
+
+@import "weights";
+@import "tags";
+@import "goals";
+@import "recipe";
+@import "prescriptions";
+

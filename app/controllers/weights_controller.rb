@@ -1,6 +1,7 @@
 class WeightsController < ApplicationController
   def index
-    @weights = Weight.all
+    @weights = Weight.where(user: current_user).order(date: :asc)
+    @weight = Weight.new
   end
 
   def new
@@ -10,6 +11,7 @@ class WeightsController < ApplicationController
   def create
     @weight = Weight.new(weight_params)
     @weight.user = current_user
+    @weight.date = Date.today
     if @weight.save
       redirect_to weights_path
     else
@@ -24,6 +26,6 @@ class WeightsController < ApplicationController
   private
 
   def weight_params
-    params.require(:weight).permit(:user, :value)
+    params.require(:weight).permit(:user, :value, :date)
   end
 end

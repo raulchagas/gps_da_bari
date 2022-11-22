@@ -1,3 +1,45 @@
-<% @weights.each do |weight| %>
-  <p> <%=  weight.value %></p>
-<% end %>
+<div class="container weight-container">
+  <div class="grid-2-1 green-shadow-l px-3">
+
+      <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
+        <div><%= f.input :value,  label: 'add weight' %></div>
+        <div style="width:fit-content; background-color: #A4C3B2;"><%= f.submit "Add" %></div>
+      <% end %>
+
+    <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
+      <div class="recipe-factors mx-3" style="text-align: center;">
+        <span class="mb-0">
+          <%= @weights.first.value %>
+        </span><br>
+         <span class="secondary-text mt-0">INITIAL</span>
+      </div>
+
+      <div class="recipe-factors mx-4" style="text-align: center;">
+        <span class="mb-0">
+          <%= @weights.last.value %>
+        </span><br>
+         <span class="secondary-text mt-0">CURRENT</span>
+      </div>
+
+      <div class="recipe-factors mx-3" style="text-align: center;">
+        <span class="mb-0">
+          <%= (@weights.last.value - @weights.first.value) %>
+        </span><br>
+         <span class="secondary-text mt-0">CHANGE</span>
+      </div>
+
+    </div>
+
+  </div>
+
+    <% @weigts_values = []%>
+    <% @weights.each do |weight| %>
+      <% @weigts_values << weight.value %>
+      <% @weigts_values.min %>
+    <% end %>
+
+    <div class="green-shadow-l p-3">
+      <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"] %>
+    </div>
+
+ </div>

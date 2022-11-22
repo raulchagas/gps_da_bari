@@ -1,1 +1,13 @@
 // Specific CSS for your home-page
+a{
+  text-decoration: none;
+  color:#333;
+}
+a:hover{
+  color: black;
+}
+
+.green-shadow-l{
+  box-shadow: 2px 2px 5px #98C9A3;
+  background-color: white;
+}

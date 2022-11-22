@@ -19,8 +19,20 @@
         <img src=<%= recipe["image"]%>>
         <div class="card-recipe-infos">
           <h2><%= recipe["label"] %></h2>
-          <p>Prep time: <%= number_to_human(recipe["totalTime"], precision: 0) %> min</p>
-          <p>Calories: <%= number_to_human(recipe["calories"], precision: 0) %> kcal</p>
+          <p>Prep time: <%= number_with_precision(recipe["totalTime"], precision: 0) %> min</p>
+          <p>Calories:
+            <% if recipe["calories"] > 4000 %>
+              <%= number_with_precision((recipe["calories"] / 6 ), precision: 0) %>
+            <% elsif recipe["calories"] > 3000 %>
+              <%= number_with_precision((recipe["calories"] / 4 ), precision: 0) %>
+            <% elsif recipe["calories"] > 2000 %>
+              <%= number_with_precision((recipe["calories"] / 3 ), precision: 0)  %>
+            <% elsif recipe["calories"] > 1000 %>
+              <%= number_with_precision((recipe["calories"] / 2 ), precision: 0) %>
+            <% else %>
+              <%= number_with_precision(recipe["calories"], precision: 0) %>
+            <% end %>
+          kcal</p>
           <% recipe_id = recipe["uri"].scan(/(?<=_).*/)%>
           <%= link_to "See Details", recipe_path(recipe_id), class:"btn-light-grey-sm rounded"%>
         </div>
