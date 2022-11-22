@@ -4,48 +4,48 @@
     <%= f.error_notification %>
     <div class="form-inputs">
       <div class="row g-3">
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :email, required: true, autofocus: true %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :avatar, as: :file %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :first_name %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :last_name %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :age %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :height %>
         </div>
-        <div class="col-md-12 mb-1">
+        <div class="col-md-12">
           <%= f.input :date_of_surgery, as: :string, input_html: { class: "datepicker" } %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :weight_before_surgery %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :target_weight %>
         </div>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :password,
                   hint: "leave it blank if you don't want to change it",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
         </div>
-        <div class="col-md-6 mb-1">
+        <div class="col-md-6">
           <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
         </div>
-        <div class="col-md-12 mb-1">
+        <div class="col-md-12">
           <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
