@@ -1,12 +1,19 @@
 // Import your components CSS files here.
 @import "alert";
 @import "avatar";
-@import "form_legend_clear";
-@import "navbar";
 @import "buttons";
 @import "calendar";
-@import "recipes";
+@import "dashboards";
+@import "form_legend_clear";
+@import "goals";
+@import "navbar";
 @import "new";
+@import "prescriptions";
+@import "recipes";
+@import "recipe";
+@import "weights";
+@import "tags";
+
 
 
 @import url(https://fonts.googleapis.com/css?family=Lato:700);
@@ -356,4 +363,3 @@
 // @import "goals";
 // @import "recipe";
 // @import "prescriptions";
-
