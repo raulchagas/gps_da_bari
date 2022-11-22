@@ -6,8 +6,354 @@
 @import "buttons";
 @import "calendar";
 @import "recipes";
-@import "weights";
-@import "tags";
-@import "goals";
-@import "recipe";
-@import "prescriptions";
+@import "new";
+
+
+@import url(https://fonts.googleapis.com/css?family=Lato:700);
+
+// // -- vars
+// $bg-color: #34495e;
+// $default-size: 1em;
+// $label-font-size: $default-size / 4;
+// $label-font-size-redo: $default-size * 4;
+
+// // -- mixins
+// @mixin size($width, $height) {
+//   height: $height;
+//   width: $width;
+// }
+
+// @mixin draw-progress($progress, $color) {
+//   .pie {
+//     .half-circle {
+//       border-color: $color;
+//     }
+
+//     .left-side {
+//       transform: rotate($progress * 3.6deg);
+//     }
+
+//     @if $progress <= 50 {
+//       .right-side {
+//         display: none;
+//       }
+//     } @else {
+//       clip: rect(auto, auto, auto, auto);
+
+//       .right-side {
+//         transform: rotate(180deg);
+//       }
+//     }
+//   }
+// }
+
+// @mixin draw-progress--solid($progress, $color, $bg-color) {
+//   background: linear-gradient(to right, $color 50%, $bg-color 50%);
+
+//   &:before {
+//     @if $progress <= 50 {
+//       background: $bg-color;
+//       transform: rotate((100 - (50 - $progress)) / 100 * 360deg * -1);
+//     } @else {
+//       background: $color;
+//       transform: rotate((100 - $progress) / 100 * 360deg);
+//     }
+//   }
+// }
+
+// // -- selectors
+// *,
+// *:before,
+// *:after {
+//   box-sizing: border-box;
+// }
+
+// html,
+// body {
+//   background: #ecf0f1;
+//   color: #444;
+//   font-family: 'Lato', Tahoma, Geneva, sans-serif;
+//   font-size: 16px;
+//   padding: 10px;
+// }
+
+// .set-size {
+//   font-size: 10em;
+// }
+
+// .charts-container {
+//   &:after {
+//     clear: both;
+//     content: '';
+//     display: table;
+//   }
+// }
+
+// .pie-wrapper {
+//   @include size($default-size, $default-size);
+//   float: left;
+//   margin: 15px;
+//   position: relative;
+
+//   &:nth-child(3n + 1) {
+//     clear: both;
+//   }
+
+//   .pie {
+//     @include size(100%, 100%);
+//     clip: rect(0, $default-size, $default-size, $default-size / 2);
+//     left: 0;
+//     position: absolute;
+//     top: 0;
+
+//     .half-circle {
+//       @include size(100%, 100%);
+//       border: ($default-size / 10) solid #3498db;
+//       border-radius: 50%;
+//       clip: rect(0, $default-size / 2, $default-size, 0);
+//       left: 0;
+//       position: absolute;
+//       top: 0;
+//     }
+//   }
+
+//   .label {
+//     background: $bg-color;
+//     border-radius: 50%;
+//     bottom: $label-font-size-redo / 10;
+//     color: #ecf0f1;
+//     cursor: default;
+//     display: block;
+//     font-size: $label-font-size;
+//     left: $label-font-size-redo / 10;
+//     line-height: $label-font-size-redo * .70;
+//     position: absolute;
+//     right: $label-font-size-redo / 10;
+//     text-align: center;
+//     top: $label-font-size-redo / 10;
+
+//     .smaller {
+//       color: #bdc3c7;
+//       font-size: .45em;
+//       padding-bottom: 20px;
+//       vertical-align: super;
+//     }
+//   }
+
+//   .shadow {
+//     @include size(100%, 100%);
+//     border: $default-size / 10 solid #bdc3c7;
+//     border-radius: 50%;
+//   }
+
+//   &.style-2 {
+//     .label {
+//       background: none;
+//       color: #7f8c8d;
+
+//       .smaller {
+//         color: #bdc3c7;
+//       }
+//     }
+//   }
+
+//   &.progress-30 {
+//     @include draw-progress(30, #3498db);
+//   }
+
+//   &.progress-60 {
+//     @include draw-progress(60, #9b59b6);
+//   }
+
+//   &.progress-90 {
+//     @include draw-progress(90, #e67e22);
+//   }
+
+//   &.progress-45 {
+//     @include draw-progress(45, #1abc9c);
+//   }
+
+//   &.progress-75 {
+//     @include draw-progress(75, #8e44ad);
+//   }
+
+//   &.progress-95 {
+//     @include draw-progress(95, #e74c3c);
+//   }
+// }
+
+// .pie-wrapper--solid {
+//   border-radius: 50%;
+//   overflow: hidden;
+
+//   &:before {
+//     border-radius: 0 100% 100% 0 / 50%;
+//     content: '';
+//     display: block;
+//     height: 100%;
+//     margin-left: 50%;
+//     transform-origin: left;
+//   }
+
+//   .label {
+//     background: transparent;
+//   }
+
+//   &.progress-65 {
+//     @include draw-progress--solid(65, #e67e22, $bg-color);
+//   }
+
+//   &.progress-25 {
+//     @include draw-progress--solid(25, #9b59b6, $bg-color);
+//   }
+
+//   &.progress-88 {
+//     @include draw-progress--solid(88, #3498db, $bg-color);
+//   }
+// }
+
+
+// .progress{
+//     width: 150px;
+//     height: 150px;
+//     line-height: 150px;
+//     background: none;
+//     margin: 0 auto;
+//     box-shadow: none;
+//     position: relative;
+// }
+// .progress:after{
+//     content: "";
+//     width: 100%;
+//     height: 100%;
+//     border-radius: 50%;
+//     border: 12px solid #fff;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+// }
+// .progress > span{
+//     width: 50%;
+//     height: 100%;
+//     overflow: hidden;
+//     position: absolute;
+//     top: 0;
+//     z-index: 1;
+// }
+// .progress .progress-left{
+//     left: 0;
+// }
+// .progress .progress-bar{
+//     width: 100%;
+//     height: 100%;
+//     background: none;
+//     border-width: 12px;
+//     border-style: solid;
+//     position: absolute;
+//     top: 0;
+// }
+// .progress .progress-left .progress-bar{
+//     left: 100%;
+//     border-top-right-radius: 80px;
+//     border-bottom-right-radius: 80px;
+//     border-left: 0;
+//     -webkit-transform-origin: center left;
+//     transform-origin: center left;
+// }
+// .progress .progress-right{
+//     right: 0;
+// }
+// .progress .progress-right .progress-bar{
+//     left: -100%;
+//     border-top-left-radius: 80px;
+//     border-bottom-left-radius: 80px;
+//     border-right: 0;
+//     -webkit-transform-origin: center right;
+//     transform-origin: center right;
+//     animation: loading-1 1.8s linear forwards;
+// }
+// .progress .progress-value{
+//     width: 90%;
+//     height: 90%;
+//     border-radius: 50%;
+//     background: #ffffff;
+//     font-size: 24px;
+//     color: #d10b4f;
+//     line-height: 135px;
+//     text-align: center;
+//     position: absolute;
+//     top: 5%;
+//     left: 5%;
+// }
+// .progress.blue .progress-bar{
+//     border-color: #d10b4f;
+// }
+// .progress.blue .progress-left .progress-bar{
+//     animation: loading-2 1.5s linear forwards 1.8s;
+// }
+
+
+
+
+
+
+// @keyframes loading-1{
+//     0%{
+//         -webkit-transform: rotate(0deg);
+//         transform: rotate(0deg);
+//     }
+//     100%{
+//         -webkit-transform: rotate(180deg);
+//         transform: rotate(180deg);
+//     }
+// }
+// @keyframes loading-2{
+//     0%{
+//         -webkit-transform: rotate(0deg);
+//         transform: rotate(0deg);
+//     }
+//     100%{
+//         -webkit-transform: rotate(144deg);
+//         transform: rotate(144deg);
+//     }
+// }
+// @keyframes loading-3{
+//     0%{
+//         -webkit-transform: rotate(0deg);
+//         transform: rotate(0deg);
+//     }
+//     100%{
+//         -webkit-transform: rotate(90deg);
+//         transform: rotate(90deg);
+//     }
+// }
+// @keyframes loading-4{
+//     0%{
+//         -webkit-transform: rotate(0deg);
+//         transform: rotate(0deg);
+//     }
+//     100%{
+//         -webkit-transform: rotate(36deg);
+//         transform: rotate(36deg);
+//     }
+// }
+// @keyframes loading-5{
+//     0%{
+//         -webkit-transform: rotate(0deg);
+//         transform: rotate(0deg);
+//     }
+//     100%{
+//         -webkit-transform: rotate(126deg);
+//         transform: rotate(126deg);
+//     }
+// }
+// @media only screen and (max-width: 990px){
+//     .progress{ margin-bottom: 20px; }
+// }
+
+// @import "weights";
+// @import "tags";
+// @import "goals";
+// @import "recipe";
+// @import "prescriptions";
+
