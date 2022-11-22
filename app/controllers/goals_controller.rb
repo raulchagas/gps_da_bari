@@ -58,6 +58,7 @@ class GoalsController < ApplicationController
     redirect_to my_goals_path
   end
 
+
   private
 
   # def goal_params

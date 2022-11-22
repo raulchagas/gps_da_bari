@@ -1,8 +1,11 @@
 class DashboardsController < ApplicationController
   def index
-    @weights = Weight.all
-    @body_fats = BodyFat.all
-    @vitamins = Vitamin.all
-    @goals = Goal.all
+    @weights = Weight.where(user: current_user).order(date: :asc)
+    @body_fats = BodyFat.where(user: current_user).order(date: :desc)
+    @vitamins = Vitamin.where(user: current_user).order(date: :desc)
+    @goals = Goal.where(user: current_user)
+    @done_goals = Goal.where(user: current_user, status: true)
+    @open_goals = Goal.where(user: current_user, status: false)
   end
+
 end
