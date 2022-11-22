@@ -15,7 +15,7 @@
   <div class="recipes-grid">
     <% @recipes.each do |recipe|%>
       <% recipe = recipe["recipe"]%>
-      <div class="card-recipe recipe-width rounded">
+      <div class="card-recipe recipe-width rounded-l">
         <img src=<%= recipe["image"]%>>
         <div class="card-recipe-infos">
           <h2 class="recipe-h2"><%= recipe["label"] %></h2>
