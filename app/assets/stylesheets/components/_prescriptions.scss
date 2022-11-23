@@ -1,10 +1,10 @@
-.prescription-style {
-  margin-top: 80px;
+.title-prescriptions {
+  color: #3d5048;
 }
 
 .prescription-link {
-  color: #3d5048;
   text-decoration: none;
+  text-align: center;
 }
 
 .card-prescription-style {
@@ -15,14 +15,42 @@
   border-color: none;
 }
 
+.prescription-title {
+  position: relative;
+  width: 90%;
+  text-align: center;
+  padding-left: 25px;
+}
+
+.prescription-icons {
+  position: relative;
+  width: 10%;
+  text-align: center;
+}
+
 .prescription-list {
   padding: 0;
 }
 
-.prescription-icon {
+.details-icon {
   text-decoration: none;
   color: #6B9080;
+  padding-bottom: 5px;
+
+  &:hover{
+    color: #888a35;
+  }
 }
+
+.trash-icon {
+  text-decoration: none;
+  color: #6B9080;
+
+  &:hover{
+    color: #8a0000;
+  }
+}
+
 
 .form-prescription-style {
   color: #3d5048;
@@ -32,6 +60,6 @@
   color: #6B9080;
 }
 
-.edit-prescription {
+.edit-prescription-icon {
   padding-right: 25px;
 }

@@ -3,10 +3,10 @@
     <h1 class="card-title card-prescription-style"><strong><%= @prescription.title %></strong></h1>
     <%= cl_image_tag @prescription.photo.key, style: "width: 400px" %>
     <h4 class="col">
-      <%= link_to "", edit_prescription_path(@prescription), class: "fa-solid fa-pen-to-square prescription-icon edit-prescription" %>
+      <%= link_to "", edit_prescription_path(@prescription), class: "fa-solid fa-pen-to-square details-icon edit-prescription-icon" %>
       <%= link_to "",
         prescription_path(@prescription),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash prescription-icon"
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash trash-icon"
       %>
     </h4>
   </div>

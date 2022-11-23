@@ -1,19 +1,26 @@
- <h1 class="container d-flex justify-content-center prescription-style">
-  <%= link_to "Add new prescription", new_prescription_path, class: "prescription-link" %>
-</h1>
 <div class="container">
-  <div class="row mt-5">
-    <% @prescriptions.each do |prescription| %>
-      <div class="col-md-6">
-        <div class="card card-prescription-style mb-3 align-items-center">
-          <%= link_to "", prescription_path(prescription), class: "fa-solid fa-magnifying-glass d-flex align-self-end prescription-icon" %>
-          <h2><strong><%= prescription.title%></strong></h2>
-          <%= link_to "",
-            prescription_path(prescription),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash d-flex align-self-end prescription-icon"
-            %>
+  <h1 class="d-flex justify-content-center mt-5 title-prescriptions animate__animated animate__fadeInDown">Prescriptions</h1>
+  <h2 class="d-flex justify-content-center mt-2">
+    <%= link_to "Add new prescription", new_prescription_path, class: "prescription-link mt-5 btn-dark-green animate__animated animate__fadeInDown" %>
+  </h2>
+  <div class="container">
+    <div class="row mt-5">
+      <% @prescriptions.each do |prescription| %>
+        <div class="col-md-6 animate__animated animate__fadeInDown">
+          <div class="d-flex card-prescription-style mb-3 align-items-center">
+            <div class="prescription-title">
+              <h3><strong><%= prescription.title%></strong></h3>
+            </div>
+            <div class="prescription-icons">
+              <%= link_to "", prescription_path(prescription), class: "fa-solid fa-magnifying-glass d-flex align-self-end details-icon" %>
+              <%= link_to "",
+                prescription_path(prescription),
+                data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash d-flex align-self-end trash-icon"
+                %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
