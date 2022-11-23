@@ -1,0 +1,47 @@
+.tag-item {
+  display: block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: grid;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  background-color: white;
+  color: #40574D;
+  border: 0.5px solid #88a397;
+  border-radius: 10px;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  box-shadow: 1px 1px 4px #98C9A3;
+}
+
+.tag-selector:checked + label {
+  background-color: #98C9A3;
+  color: rgb(53, 49, 49);
+}
+
+.tag-card {
+  background-color: #98C9A3;
+  color: rgb(53, 49, 49);
+  cursor: pointer;
+  display: grid;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 0px solid #40574D;
+  border-radius: 10px;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 2px 2px 4px #98C9A3;
+}
