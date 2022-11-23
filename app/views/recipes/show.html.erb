@@ -89,8 +89,8 @@
     <div class="pad-right pe-4">
 
       <p id="ingredients-count" class="margin-separator">Nutrition</p>
-      <div class="d-flex margin-separator">
-        <div class="recipe-factors me-5">
+      <div class="d-flex margin-separator evenly-center">
+        <div class="recipe-factors">
           <span class="mb-0">
             <% if @recipe["calories"] > 4000 %>
               <%= number_with_precision((@recipe["calories"] / 5 ), precision: 0) %>
@@ -107,7 +107,7 @@
           <span class="secondary-text mt-0"> calories</span>
         </div>
 
-        <div class="recipe-factors me-5">
+        <div class="recipe-factors">
           <span class="mb-0"><%= number_with_precision(@recipe["totalTime"], precision: 0) %></span><br>
           <span class="secondary-text mt-0"> minutes</span>
         </div>
@@ -120,7 +120,7 @@
         <% end %>
       </div>
 
-      <div>
+      <div class="mx-3">
         <% @recipe["digest"].each do |nutrient| %>
 
           <div class="my-2">
