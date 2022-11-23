@@ -1,6 +1,6 @@
 <div class="container d-flex flex-column align-items-center">
   <div id="progress-circle" class="progress-circle my-4">
-    <p class="progress-circle__text label"><%= @weights.last.value %> kg</p>
+    <p class="progress-circle__text label"><%= @weights.last.nil? ? current_user.weight_before_surgery.to_i : @weights.last.value %> kg</p>
   </div>
   <div class="green-shadow-l px-3 rounded w-100">
     <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
@@ -12,7 +12,7 @@
       </div>
       <div class="recipe-factors mx-4" style="text-align: center;">
         <span class="mb-0">
-          <%= @weights.last.value %>
+          <%= @weights.last.nil? ? "-" : @weights.last.value %>
         </span><br>
         <span class="secondary-text mt-0">CURRENT</span>
       </div>
@@ -62,6 +62,6 @@
 </div>
 <script>
   document.getElementById("progress-circle").style.background = `radial-gradient(white 50%, transparent 51%),
-  conic-gradient(transparent 0deg ${<%= @weights.last.value * 3.6 %>}deg, gainsboro ${<%= @weights.last.value * 3.6 %>}deg 360deg),
+  conic-gradient(transparent 0deg ${<%= current_user.progress_value * 3.6 %>}deg, gainsboro ${<%= current_user.progress_value * 3.6 %>}deg 360deg),
   conic-gradient(green 0deg, green 90deg, lightgreen 180deg, green)`;
 </script>
