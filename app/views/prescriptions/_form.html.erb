@@ -1,5 +1,11 @@
 <%= simple_form_for @prescription do |f| %>
-  <%= f.input :title %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
+  <div class="form-prescription-style">
+    <%= f.input :title %>
+    <%= f.input :photo, as: :file %>
+  </div>
+  <div class="form-actions d-flex flex-column align-items-center mb-2">
+    <div class="col-12, mb-3">
+      <%= f.submit class: "mt-5 btn-dark-green" %>
+    </div>
+  </div>
 <% end %>
