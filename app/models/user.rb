@@ -39,4 +39,8 @@ class User < ApplicationRecord
     end
     streak
   end
+
+  def distance_to_target
+    45
+  end
 end
