@@ -39,7 +39,7 @@
     <% end %>
 
     <div class="green-shadow-l p-3 rounded-l">
-      <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"], , xmin: "2021-01-01", xmax: "2022-01-01" %>
+      <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"] %>
     </div>
 
  </div>
