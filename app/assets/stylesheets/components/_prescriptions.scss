@@ -1,9 +1,65 @@
+.title-prescriptions {
+  color: #3d5048;
+}
+
+.prescription-link {
+  text-decoration: none;
+  text-align: center;
+}
+
 .card-prescription-style {
   background-color: #ffffff;
-  color: #3d5048;
+  color: #6B9080;
   padding: 10px;
+  border-radius: 15px;
+  border-color: none;
+}
+
+.prescription-title {
+  position: relative;
+  width: 90%;
+  text-align: center;
+  padding-left: 25px;
+}
+
+.prescription-icons {
+  position: relative;
+  width: 10%;
+  text-align: center;
 }
 
 .prescription-list {
   padding: 0;
+}
+
+.details-icon {
+  text-decoration: none;
+  color: #6B9080;
+  padding-bottom: 5px;
+
+  &:hover{
+    color: #888a35;
+  }
+}
+
+.trash-icon {
+  text-decoration: none;
+  color: #6B9080;
+
+  &:hover{
+    color: #8a0000;
+  }
+}
+
+
+.form-prescription-style {
+  color: #3d5048;
+}
+
+.prescription-name {
+  color: #6B9080;
+}
+
+.edit-prescription-icon {
+  padding-right: 25px;
 }
