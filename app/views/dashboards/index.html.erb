@@ -45,8 +45,13 @@
   </div>
 
   <div class="green-shadow-l px-3 rounded mb-5">
-    Body_fat: <%= @body_fats.last.value %>%
-    <%= link_to "see my body_fat", body_fats_path, class:"btn-green" %>
+    <% if @body_fats.present? %>
+        Body_fat: <%= @body_fats.last.value %>
+        Adicionar link para ADD body fat igual a weight
+        <%= link_to "see my body_fat", body_fats_path, class:"btn-green" %>
+    <% else %>
+      Adicionar link para ADD body fat igual a weight
+    <% end %>
   </div>
 
     <div class="green-shadow-l px-3 rounded mb-5">
