@@ -24,6 +24,7 @@ class User < ApplicationRecord
     self.update(vitamin_record: record)
   end
 
+
   # private
 
   def consecutive_days
@@ -38,9 +39,5 @@ class User < ApplicationRecord
       end
     end
     streak
-  end
-
-  def distance_to_target
-    45
   end
 end
