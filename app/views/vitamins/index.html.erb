@@ -1,23 +1,35 @@
-<div class="container mt-3">
+<h1 class="vitamins-title mt-3 d-flex justify-content-center">Vitamins</h1>
+<div class="container vitamins-style row mt-5 animate__animated animate__fadeInDown">
   <% @created = @vitamins %>
-  <% if @created.empty? %>
-    Did you take your vitamin today?
-    <%= simple_form_for @vitamin do |f| %>
-      <%= f.submit "Yes!" %>
-    <% end %>
-  <% else %>
-    <% if current_user.days.first == Date.today %>
-      <% @day = Date.today %>
-      You already took your vitamin today!
-    <% else %>
+  <div class="vitamins-check">
+    <% if @created.empty? %>
       Did you take your vitamin today?
       <%= simple_form_for @vitamin do |f| %>
-        <%= f.submit "Yes!" %>
+        <%= f.submit "Yes!", class: "btn-dark-green" %>
       <% end %>
+  </div>
+  <div class="vitamins-date mb-2">
+    <% else %>
+      <% if current_user.days.first == Date.today %>
+        <% @day = Date.today %>
+        <h4 class="vitamins-taken">You already took your vitamin today!</h4>
+      <% else %>
+        Did you take your vitamin today?
+        <%= simple_form_for @vitamin do |f| %>
+          <%= f.submit "Yes!", class: "btn-dark-green" %>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="card green-shadow-l vitamins-record mt-4">
+    <div class="d-flex justify-content-center align-items-center">
+      <i class="fa-solid fa-ranking-star me-2 vitamins-icon"></i>
+      <p style="margin: 0">Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
+    </div>
+      <p style="margin: 0">Your current streak is: <%= current_user.consecutive_days %> </p>
     <% end %>
-    <p>Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
-      <p>Your current streak is: <%= current_user.consecutive_days %> </p>
-    <% end %>
+  </div>
+</div>
+<div class="container d-flex justify-content-center animate__animated animate__fadeInDown">
   <div class="calendar">
     <%= month_calendar do |date| %>
       <% if current_user.days.include?(date) %>
