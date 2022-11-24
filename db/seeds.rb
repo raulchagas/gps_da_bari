@@ -20,8 +20,10 @@ puts "Creating user"
 
 @user2 = User.create!(
   email: "teste2@teste",
+  target_weight: 82,
+  weight_before_surgery: 120,
   password: "aaaaaa",
-  vitamin_record: 4
+  vitamin_record: 3
 )
 
 puts "Creating prescription"

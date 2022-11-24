@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: "dashboards#index"
   resources :dashboards, only: %i[index]
   resources :goals, only: %i[index new create destroy]
   resources :weights, only: %i[index show new create]
