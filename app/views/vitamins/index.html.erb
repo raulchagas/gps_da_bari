@@ -1,5 +1,5 @@
 <h1 class="vitamins-title mt-3 d-flex justify-content-center">Vitamins</h1>
-<div class="container vitamins-style row mt-5 animate__animated animate__fadeInDown">
+<div class="container d-flex justify-content-center vitamins-style row mt-5 animate__animated animate__fadeInDown">
   <% @created = @vitamins %>
   <div class="vitamins-check">
     <% if @created.empty? %>
@@ -8,7 +8,7 @@
         <%= f.submit "Yes!", class: "btn-dark-green" %>
       <% end %>
   </div>
-  <div class="vitamins-date mb-2">
+  <div class="vitamins-date d-flex justify-content-center mb-2">
     <% else %>
       <% if current_user.days.first == Date.today %>
         <% @day = Date.today %>
