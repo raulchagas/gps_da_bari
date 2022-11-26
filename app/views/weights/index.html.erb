@@ -34,14 +34,30 @@
 
   </div>
 
+  <div class="green-shadow-l px-3 rounded-l">
     <% @weigts_values = []%>
     <% @weights.each do |weight| %>
       <% @weigts_values << weight.value %>
       <% @weigts_values.min %>
     <% end %>
 
-    <div class="green-shadow-l p-3 rounded-l">
-      <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"] %>
+    <div>
+      <%= form_with url: weights_path, method: :get, class:"align-center text-muted small d-flex pt-2 justify-content-around" do |form| %>
+        <div>
+          <%= form.label :start_date, "From " %>
+          <%= form.date_field :start_date, value: params[:start_date], class:"me-4 text-muted mb-2", style:"width: 80px; align-self: end;" %>
+        </div>
+        <div>
+          <%= form.label :end_date, "To " %>
+          <%= form.date_field :end_date, value: params[:end_date], class:"me-4 text-muted mb-2", style:"width: 80px; align-self: end;" %>
+        </div>
+        <%= form.button :submit, class:"color-green" do %>
+          <i class="fa-solid fa-filter"></i>
+        <% end %>
+      <% end %>
     </div>
+
+    <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+  </div>
 
  </div>
