@@ -1,0 +1,42 @@
+
+
+
+.btn-ghost {
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  background: rgb(255, 12, 44);
+  margin-top: 40px;
+  margin-left: 130px;
+  width: 240px;
+  height: 80px;
+  font-size: 30px;
+
+
+
+
+
+}
+
+.align-text {
+
+  text-align: center;
+  margin-top: 400px;
+  margin-left: 10px;
+}
+
+
+.btn-ghost:hover {
+  opacity: 1;
+}
+
+.container {
+
+  position: relative;
+  min-height: 50vh;
+  background-color: rgb(93, 211, 113);
+}
