@@ -60,10 +60,10 @@
   </div>
 
   <div class="green-shadow-l px-3 rounded-l">
-    <% @weigts_values = []%>
+    <% @weights_values = []%>
     <% @weights.each do |weight| %>
-      <% @weigts_values << weight.value %>
-      <% @weigts_values.min %>
+      <% @weights_values << weight.value %>
+      <% @weights_values.min %>
     <% end %>
 
     <div>
@@ -83,7 +83,7 @@
     </div>
 
     <% unless @weights.empty? %>
-      <%= line_chart Weight.pluck(:date, :value), min: (@weights_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+      <%= line_chart @weights.pluck(:date, :value), min: (@weights_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
     <% else %>
       <%= line_chart 0, colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
     <% end %>
