@@ -1,6 +1,5 @@
 <%= provide :title, "Prescriptions" %>
 <div class="container">
-  <h1 class="d-flex justify-content-center mt-5 title-prescriptions animate__animated animate__fadeInDown">Prescriptions</h1>
   <h2 class="d-flex justify-content-center mt-2">
     <%= link_to "Add new prescription", new_prescription_path, class: "prescription-link mt-5 btn-dark-green animate__animated animate__fadeInDown" %>
   </h2>
@@ -8,7 +7,7 @@
     <div class="row mt-5">
       <% @prescriptions.each do |prescription| %>
         <div class="col-md-6 animate__animated animate__fadeInDown">
-          <div class="d-flex card-prescription-style mb-3 align-items-center">
+          <div class="d-flex card-prescription-style shadow rounded-l mb-3 align-items-center">
             <div class="prescription-title">
               <h3><strong><%= prescription.title%></strong></h3>
             </div>
