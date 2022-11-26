@@ -15,6 +15,20 @@
   justify-content: space-around;
 }
 
+@media(max-width: 600px) {
+  .nav-bari {
+    h1{
+      font-size: 24px;
+    }
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+.navbar-toggler{
+  background-color: transparent;
+  border: 0px;
+  text-align: end;
+}
 .icon-dark-green {
   color: white;
 }
@@ -32,3 +46,22 @@
   border-radius: 5px;
 }
 
+.one-fourth {
+  position: relative;
+  width: 20%;
+}
+.two-fourths {
+  position: relative;
+  width: 45%;
+  text-align: center;
+}
+
+ .align-left {
+  margin-right: auto;
+  margin-left: 10px !important;
+}
+
+.align-right {
+  margin-left: auto;
+  margin-right: 10px !important;
+}
