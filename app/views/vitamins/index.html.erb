@@ -2,8 +2,10 @@
   <div class="vitamins-style row mt-4 animate__animated animate__fadeInDown">
     <% @created = @vitamins %>
     <div class="vitamins-check">
-      <i class="fa-solid fa-capsules"></i>
-      <h3 class="mb-4">Did you take your vitamin today?</h3>
+      <div class="d-flex justify-content-center">
+        <%= image_tag("medicine.png", width: 100, height: 100) %>
+      </div>
+      <h3 class="mt-4 mb-4">Did you take your vitamin today?</h3>
       <% if @created.empty? %>
         <%= simple_form_for @vitamin do |f| %>
           <%= f.submit "Yes!", class: "btn-dark-green" %>
@@ -41,3 +43,4 @@
     </div>
   </div>
 </div>
+<i class="fa-solid fa-capsules"></i>
