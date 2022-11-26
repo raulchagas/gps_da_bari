@@ -6,6 +6,7 @@ class DashboardsController < ApplicationController
     @goals = Goal.where(user: current_user)
     @done_goals = Goal.where(user: current_user, status: true)
     @open_goals = Goal.where(user: current_user, status: false)
+    @user = current_user
   end
 
 end

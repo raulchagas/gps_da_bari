@@ -24,6 +24,15 @@ class User < ApplicationRecord
     self.update(vitamin_record: record)
   end
 
+  def progress_value
+    if weights.empty? || target_weight.nil?
+      0
+    else
+      percentage_target = (target_weight / weights.last.value)
+      percentage_target > 1 ? 100 : percentage_target * 100
+
+    end
+  end
   # private
 
   def consecutive_days
