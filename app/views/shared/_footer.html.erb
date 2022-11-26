@@ -1,0 +1,33 @@
+<footer>
+    <div class="footer" style="background-color: #98C9A3; height: 60px;">
+      <div class="footer-links">
+
+        <%= link_to weights_path do %>
+          <i class="fa-solid fa-weight-scale"></i>
+        <%end%>
+
+
+        <%= link_to vitamins_path do %>
+           <i class="fa-solid fa-capsules"></i>
+        <%end%>
+
+        <div class= "btn-home rounded-circle">
+          <%= link_to root_path do %>
+            <%= image_tag("home.png", width: 40, height: 40)%>
+          <%end%>
+
+        </div>
+
+        <%= link_to prescriptions_path do %>
+           <i class="fa-solid fa-clipboard-list"></i>
+        <%end%>
+
+
+        <%= link_to goals_path do %>
+           <i class="fa-solid fa-medal"></i>
+        <%end%>
+
+
+      </div>
+    </div>
+  </footer>

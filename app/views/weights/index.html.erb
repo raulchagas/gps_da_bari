@@ -5,7 +5,7 @@
         <div><%= f.input :value,  label: 'add weight' %></div>
         <div style="width:fit-content; background-color: #A4C3B2;"><%= f.submit "Add" %></div>
       <% end %>
-
+    <% unless @weights.empty? %>
     <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
       <div class="recipe-factors mx-3" style="text-align: center;">
         <span class="mb-0">
@@ -29,14 +29,14 @@
       </div>
 
     </div>
-
+     <%end%>
   </div>
 
   <div class="green-shadow-l px-3 rounded-l">
-    <% @weigts_values = []%>
+    <% @weights_values = []%>
     <% @weights.each do |weight| %>
-      <% @weigts_values << weight.value %>
-      <% @weigts_values.min %>
+      <% @weights_values << weight.value %>
+      <% @weights_values.min %>
     <% end %>
 
     <div>
@@ -55,7 +55,7 @@
       <% end %>
     </div>
 
-    <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+    <%= line_chart Weight.pluck(:date, :value), min: (@weights_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] unless @weights_values.empty? %>
   </div>
 
  </div>
