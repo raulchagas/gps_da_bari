@@ -82,7 +82,7 @@
     </div>
 
     <% unless @weights.empty? %>
-      <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+      <%= line_chart Weight.pluck(:date, :value), min: (@weights_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
     <% else %>
       <%= line_chart 0, colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
     <% end %>
