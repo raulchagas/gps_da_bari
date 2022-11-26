@@ -6,22 +6,22 @@
     <span>My Weight</span>
   </div>
   <div class="cards">
-    <div class="green-shadow-l rounded">
-      <div class="d-flex fs-normal p-3 mb-3">
+    <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3 align-items-center">
+      <div class="d-flex">
         <div class="mx-3" style="text-align: center;">
-          <span class="mb-0">
+          <span class>
             <%= current_user.weight_before_surgery %>
           </span><br>
           <span class="secondary-text mt-0">INITIAL</span>
         </div>
         <div class="mx-4" style="text-align: center;">
-          <span class="mb-0">
+          <span>
             <%= @weights.last.nil? ? "-" : @weights.last.value %>
           </span><br>
           <span class="secondary-text mt-0">CURRENT</span>
         </div>
         <div class="mx-3" style="text-align: center;">
-          <span class="mb-0">
+          <span>
             <%= current_user.target_weight %>
           </span><br>
           <span class="secondary-text mt-0">TARGET</span>
@@ -29,24 +29,22 @@
         <%= link_to "My Weight", weights_path, class:"btn-green p-2"  %>
       </div>
     </div>
-    <div class="green-shadow-l px-3 p-3 rounded mt-3 mb-3" style="text-align: center">
+    <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3" style="text-align: center">
       <p class="fw-semibold">Vitamin Intake</p>
       <p>Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
       <p>Your current streak is: <%= current_user.consecutive_days %> </p>
       <%= link_to "Vitamins", vitamins_path, class:"btn-green p-2" %>
     </div>
-  </div>
-  <div class="cards">
-    <div class="green-shadow-l px-3 p-3 rounded mb-3" style="text-align: center">
+    <div class="green-shadow-l px-3 p-3 card-product mb-3" style="text-align: center">
       <%= link_to "My Prescriptions", prescriptions_path, class:"btn-green p-2" %>
     </div>
-    <div class="green-shadow-l px-3 p-3 rounded mb-3" style="text-align: center">
+    <div class="green-shadow-l px-3 p-3 card-product mb-3" style="text-align: center">
       Achieved goals: <%= @done_goals.count%>
       Open goals: <%= @open_goals.count %>
       <%= link_to "see my goals", my_goals_path, class:"btn-green" %>
     </div>
   </div>
-  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+  <div class="green-shadow-l px-3 card-product mb-5 w-100">
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
