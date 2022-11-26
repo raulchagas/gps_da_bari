@@ -13,15 +13,19 @@ Prescription.destroy_all
 
 puts "Creating user"
 @user = User.create!(
-  email: "teste@teste",
+  email: "raul@gmail",
   password: "aaaaaa",
-  vitamin_record: 1
+  vitamin_record: 4,
+  target_weight: 82,
+  weight_before_surgery: 112
 )
 
 @user2 = User.create!(
   email: "teste2@teste",
+  target_weight: 82,
+  weight_before_surgery: 120,
   password: "aaaaaa",
-  vitamin_record: 4
+  vitamin_record: 3
 )
 
 puts "Creating prescription"
@@ -34,10 +38,45 @@ Prescription.create!(
   user: @user
 )
 
-puts "Creating vitamins"
+weights = [87,89,85,78,81,85,85,88,90,93,95,98,105,110,112]
+@datey = Date.today
+puts "Creating weights"
+weights.each do |w|
+  @datey = @datey -1
+  Weight.create!(
+    value: w,
+    user: @user,
+    date: @datey
+  )
+end
 
+puts "Creating vitamins"
 Vitamin.create!(
-  date: (Date.today - 5),
+  date: (Date.today - 10),
+  user: @user,
+)
+Vitamin.create!(
+  date: (Date.today - 9),
+  user: @user,
+)
+Vitamin.create!(
+  date: (Date.today - 8),
+  user: @user,
+)
+Vitamin.create!(
+  date: (Date.today - 7),
+  user: @user,
+)
+Vitamin.create!(
+  date: (Date.today - 4),
+  user: @user,
+)
+Vitamin.create!(
+  date: (Date.today - 3),
+  user: @user,
+)
+Vitamin.create!(
+  date: (Date.today - 2),
   user: @user,
 )
 Vitamin.create!(

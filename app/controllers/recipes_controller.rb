@@ -4,18 +4,18 @@ class RecipesController < ApplicationController
       if params[:query].present?
         sql_query = params[:query]
         # @recipes = Recipe.where(sql_query, query: "%#{params[:query]}%")
-        response = HTTParty.get("https://api.edamam.com/api/recipes/v2?type=public&q=#{sql_query}&app_id=6b0dad4e&app_key=f84be2e85d0919a734759ee45945a44d&imageSize=REGULAR&random=true")
+        response = HTTParty.get("https://api.edamam.com/api/recipes/v2?type=public&q=#{params[:query]}&app_id=#{ENV['ID_KEY']}&app_key=%20#{ENV['API_KEY']}&imageSize=REGULAR")
 
         @recipes = response["hits"]
       else
-        response = HTTParty.get("https://api.edamam.com/api/recipes/v2?type=public&app_id=6b0dad4e&app_key=f84be2e85d0919a734759ee45945a44d&imageSize=REGULAR&random=true")
+        response = HTTParty.get("https://api.edamam.com/api/recipes/v2?type=public&app_id=#{ENV['ID_KEY']}&app_key=%20#{ENV['API_KEY']}&imageSize=REGULAR")
 
         @recipes = response["hits"]
       end
     end
 
   def show
-    recipe_response = HTTParty.get("https://api.edamam.com/api/recipes/v2/#{params[:id]}?type=public&app_id=6b0dad4e&app_key=%20f84be2e85d0919a734759ee45945a44d%09")
+    recipe_response = HTTParty.get("https://api.edamam.com/api/recipes/v2/#{params[:id]}?type=public&app_id=#{ENV['ID_KEY']}&app_key=%20#{ENV['API_KEY']}%09")
     @recipe = recipe_response["recipe"]
   end
 

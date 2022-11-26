@@ -1,80 +1,152 @@
-<div class="container">
-  <div class="card">
-    <%= @recipe["label"] %>
-  </div>
+<div class="container recipe-container">
 
-  <div class="card">
-    <%= @recipe["url"] %>
-  </div>
-
-  <div class="card">
-    <img src="<%= @recipe["images"]["REGULAR"]["url"] %>" alt="">
-  </div>
-
-  <div class="card">
-    <%= @recipe["dietLabels"] %>
-  </div>
-
-  <div class="card">
-    <%= @recipe["healthLabels"] %>
-  </div>
-
-  <div class="card">
-    <%= @recipe["cautions"] %>
-  </div>
-
-  <div class="card">
-    <%= @recipe["ingredientLines"].count%> Ingredients
-  </div>
-
-  <div class="card">
-    <% @recipe["ingredientLines"].each do |ingredient|%>
-      <p><%= ingredient%></p>
-    <%end %>
-  </div>
-
-  <div class="card">
-    Nutrition
-    <%= @recipe["calories"]%> CALORIES / SERVING
-  </div>
-
-  <div class="card">
-    <%= @recipe["glycemicIndex"] %>
-  </div>
-
-  <div class="card">
-    Meal type: <% @recipe["mealType"].each do|meal_type| %>
-      <%= meal_type.capitalize %>
+  <div class="mb-3 mt-2">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control  recipes-search",
+        placeholder: "Find a recipe"
+      %>
+      <%= submit_tag "Search", class: "btn btn-recipe-dark-green mx-2 " %>
+      <%= link_to "Clear", recipes_path, class: "btn btn-recipe-light-green " %>
     <% end %>
   </div>
 
-  <div class="card">
-    Dish type: <% @recipe["dishType"].each do|dish_type| %>
-      <%= dish_type.capitalize %>
-    <% end %>
+
+  <div class="recipe-grid mt-3 shadow p-3 rounded-l">
+
+
+      <img src="<%= @recipe["images"]["REGULAR"]["url"] %>" style="width: 300px; length: 300px; margin-inline: auto;">
+
+
+
+    <div class="pad-right">
+
+      <div class="recipe-title mb-2">
+        <%= @recipe["label"] %>
+      </div>
+      <div class="small-text text-center mb-4">
+        See full recipe on: <a href="<%= @recipe["url"] %>" target="_blank" ><%= @recipe["source"] %></a>
+      </div>
+
+      <% if @recipe["dietLabels"].present?%>
+        <div class="recipe-tags">
+          Diet types: <span class="italic"><%= @recipe["dietLabels"].sort.join(", ") %></span>
+        </div>
+      <% end %>
+
+      <% if  @recipe["healthLabels"].present?%>
+        <div class="recipe-tags">
+          Health labels: <span class="italic"><%= @recipe["healthLabels"].sort.join(", ") %></span>
+        </div>
+      <% end %>
+
+      <% if @recipe["cautions"].present?%>
+        <div class="recipe-tags">
+          Contains: <span class="italic"><%= @recipe["cautions"].sort.join(", ") %></span>
+        </div>
+      <% end %>
+
+      <% if @recipe["mealType"].present?%>
+        <div class="recipe-tags">
+          Meal type: <% @recipe["mealType"].each do|meal_type| %>
+            <span class="italic"><%= meal_type.capitalize %></span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if @recipe["dishType"].present?%>
+        <div class="recipe-tags">
+          Dish type: <% @recipe["dishType"].each do|dish_type| %>
+          <span class="italic"><%= dish_type.capitalize %></span>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
 
-  <div class="card">
-    Instructions: <% @recipe["instructions"] %>
-  </div>
+
+  <div class="recipe-grid mt-3 shadow p-3 rounded-l">
+    <div calss="pad-left">
+      <div id="ingredients-count" class="margin-separator">
+        <%= @recipe["ingredientLines"].count%> Ingredients
+      </div>
+
+      <div class="margin-separator">
+        <% @recipe["ingredientLines"].each do |ingredient|%>
+          <p class="ingredients"><%= ingredient%></p>
+        <%end %>
+      </div>
+
+      <% if @recipe["instructions"].present? %>
+        <div class="recipe-tags margin-separator">
+          Instructions: <span class="italic"><% @recipe["instructions"] %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="pad-right pe-4">
+
+      <p id="ingredients-count" class="margin-separator">Nutrition</p>
+      <div class="d-flex margin-separator evenly-center">
+        <div class="recipe-factors">
+          <span class="mb-0">
+            <% if @recipe["calories"] > 4000 %>
+              <%= number_with_precision((@recipe["calories"] / 5 ), precision: 0) %>
+            <% elsif @recipe["calories"] > 3000 %>
+              <%= number_with_precision((@recipe["calories"] / 4 ), precision: 0) %>
+            <% elsif @recipe["calories"] > 2000 %>
+              <%= number_with_precision((@recipe["calories"] / 3 ), precision: 0)  %>
+            <% elsif @recipe["calories"] > 1000 %>
+              <%= number_with_precision((@recipe["calories"] / 2 ), precision: 0) %>
+            <% else %>
+              <%= number_with_precision(@recipe["calories"], precision: 0) %>
+            <% end %>
+          </span><br>
+          <span class="secondary-text mt-0"> calories</span>
+        </div>
+
+        <div class="recipe-factors">
+          <span class="mb-0"><%= number_with_precision(@recipe["totalTime"], precision: 0) %></span><br>
+          <span class="secondary-text mt-0"> minutes</span>
+        </div>
+
+        <% if @recipe["glycemicIndex"].present? %>
+          <div class="recipe-factors">
+            <span class="mb-0"><%= @recipe["glycemicIndex"] %> 40%%</span><br>
+            <span class="secondary-text mt-0">glycemic index</span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="mx-3">
+        <% @recipe["digest"].each do |nutrient| %>
+
+          <div class="my-2">
+            <div class="d-flex secondary-text">
+              <span class="nutrient-label"><%= nutrient["label"] %></span>
+              <span class="nutrient-units"><%= number_with_precision(nutrient["total"], precision: 0) %><%= nutrient["unit"] %></span>
+              <span class="nutrient-units"><%= number_with_precision(nutrient["daily"], precision: 0) %>%</span>
+            </div>
+              <% if nutrient["sub"].present? %>
+                <% nutrient["sub"].each do |sub| %>
+                  <div class="d-flex justify-content-between ms-2 secondary-text">
+                    <span class="nutrient-label"><%= sub["label"]%></span>
+                    <span class="nutrient-units"><%= number_with_precision(sub["total"], precision: 0)%><%= sub["unit"]%></span>
+                    <span class="nutrient-units"><%= number_with_precision(sub["daily"], precision: 0)%>%</span>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+    </div>
 
 
-  <div class="card">
-    tags: <%= @recipe["tags"] %>
-  </div>
-
-  <div class="card">
-    Total Nutrients: <% @recipe["totalNutrients"].each do |nutrient| %>
-      <p><%= nutrient %></p>
-    <% end %>
-  </div>
-
-  <div class="card">
-    Digest:<%= @recipe["digest"].each do |nutrient| %>
-      <p><%= nutrient["label"] %></p>
-      <p><%= nutrient["tag"] %></p>
-      <p><%= nutrient["schemaOrgTag"] %></p>
-    <% end %>
   </div>
 
 </div>

@@ -1,0 +1,68 @@
+<div class="container d-flex flex-column align-items-center">
+  <div id="progress-circle" class="progress-circle my-4">
+    <p class="progress-circle__text label"><%= @weights.last.value %> KG</p>
+  </div>
+  <div class="green-shadow-l px-3 rounded w-100">
+    <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
+      <div class="recipe-factors mx-3" style="text-align: center;">
+        <span class="mb-0">
+          <%= current_user.distance_to_target %>
+        </span><br>
+        <span class="secondary-text mt-0">INITIAL</span>
+      </div>
+      <div class="recipe-factors mx-4" style="text-align: center;">
+        <span class="mb-0">
+          <%= @weights.last.value %>
+        </span><br>
+        <span class="secondary-text mt-0">CURRENT</span>
+      </div>
+      <div class="recipe-factors mx-3" style="text-align: center;">
+        <span class="mb-0">
+          <%= current_user.target_weight %>
+        </span><br>
+        <span class="secondary-text mt-0">TARGET</span>
+      </div>
+      <%= link_to "Weights tracker", weights_path %>
+    </div>
+  </div>
+  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+    Vitamin:
+    <p>Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
+    <p>Your current streak is: <%= current_user.consecutive_days %> </p>
+    <%= link_to "see more", vitamins_path, class:"btn-green" %>
+  </div>
+  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+    See your prescriptions
+    <%= link_to "see more", prescriptions_path, class:"btn-green" %>
+  </div>
+  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+    Achieved goals: <%= @done_goals.count%>
+    Open goals: <%= @open_goals.count %>
+    <%= link_to "see my goals", my_goals_path, class:"btn-green" %>
+  </div>
+  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+    <% if @body_fats.present? %>
+      Body_fat: <%= @body_fats.last.value %>
+      Adicionar link para ADD body fat igual a weight
+      <%= link_to "see my body_fat", body_fats_path, class:"btn-green" %>
+    <% else %>
+      Adicionar link para ADD body fat igual a weight
+    <% end %>
+  </div>
+  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control  recipes-search",
+          placeholder: "Find a recipe"
+        %>
+      <%= submit_tag "Find recipes", class: "btn-green mx-2 " %>
+    <% end %>
+  </div>
+</div>
+<script>
+  console.log("Eita");
+  document.getElementById("progress-circle").style.background = `radial-gradient(white 50%, transparent 51%),
+  conic-gradient(transparent 0deg ${<%= @weights.last.value * 3.6 %>}deg, gainsboro ${<%= @weights.last.value * 3.6 %>}deg 360deg),
+  conic-gradient(red 0deg, blue 90deg, lightblue 180deg, blue)`;
+</script>
