@@ -1,11 +1,20 @@
 .calendar{
   width: 300px;
   text-align: center;
-  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .blue{
   background-color: blue;
+  color: white;
+  border-radius: 50%;
+  width: 25px;
+  text-align: center;
+}
+
+.green {
+  background-color: rgb(28, 75, 18);
   color: white;
   border-radius: 50%;
   width: 25px;
