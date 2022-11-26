@@ -1,42 +1,45 @@
-<%= provide :title, "Vitamins" %>
-<div class="container d-flex justify-content-center vitamins-style row mt-5 animate__animated animate__fadeInDown">
-  <% @created = @vitamins %>
-  <div class="vitamins-check">
-    <% if @created.empty? %>
-      Did you take your vitamin today?
-      <%= simple_form_for @vitamin do |f| %>
-        <%= f.submit "Yes!", class: "btn-dark-green" %>
-      <% end %>
-  </div>
-  <div class="vitamins-date d-flex justify-content-center mb-2">
-    <% else %>
-      <% if current_user.days.first == Date.today %>
-        <% @day = Date.today %>
-        <h4 class="vitamins-taken">You already took your vitamin today!</h4>
-      <% else %>
-        Did you take your vitamin today?
+<div class="container">
+  <div class="vitamins-style row mt-4 animate__animated animate__fadeInDown">
+    <% @created = @vitamins %>
+    <div class="vitamins-check">
+      <div class="d-flex justify-content-center">
+        <%= image_tag("medicine.png", width: 100, height: 100) %>
+      </div>
+      <h3 class="mt-4 mb-4">Did you take your vitamin today?</h3>
+      <% if @created.empty? %>
         <%= simple_form_for @vitamin do |f| %>
           <%= f.submit "Yes!", class: "btn-dark-green" %>
         <% end %>
-      <% end %>
-  </div>
-  <div class="card green-shadow-l vitamins-record mt-4">
-    <div class="d-flex justify-content-center align-items-center">
-      <i class="fa-solid fa-ranking-star me-2 vitamins-icon"></i>
-      <p style="margin: 0">Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
     </div>
-      <p style="margin: 0">Your current streak is: <%= current_user.consecutive_days %> </p>
-    <% end %>
-  </div>
-</div>
-<div class="container d-flex justify-content-center animate__animated animate__fadeInDown">
-  <div class="calendar">
-    <%= month_calendar do |date| %>
-      <% if current_user.days.include?(date) %>
-        <div class="blue"><%= date.day %></div>
+    <div class="vitamins-date d-flex justify-content-center mb-2">
       <% else %>
-        <%= date.day %>
+        <% if current_user.days.first == Date.today %>
+          <% @day = Date.today %>
+          <h4 class="vitamins-taken">You already took your vitamin today!</h4>
+        <% else %>
+          <%= simple_form_for @vitamin do |f| %>
+            <%= f.submit "Yes!", class: "btn-dark-green" %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="card shadow vitamins-record mt-5 py-2">
+      <div class="d-flex justify-content-center align-items-center">
+        <i class="fa-solid fa-ranking-star me-2 vitamins-icon"></i>
+        <p style="margin: 0">Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
+      </div>
+        <p style="margin: 0">Your current streak is: <%= current_user.consecutive_days %> </p>
       <% end %>
-    <% end %>
+    </div>
+  </div>
+  <div class="mt-5 animate__animated animate__fadeInDown" style="align-items: center;">
+    <div class="calendar">
+      <%= month_calendar do |date| %>
+        <% if current_user.days.include?(date) %>
+          <div class="green"><%= date.day %></div>
+        <% else %>
+          <%= date.day %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
