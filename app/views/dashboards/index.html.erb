@@ -7,34 +7,45 @@
     <span>My Weight</span>
   </div>
   <div class="cards">
-    <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3 align-items-center">
-      <div class="d-flex">
-        <div class="mx-3" style="text-align: center;">
-          <span class>
-            <%= current_user.weight_before_surgery %>
-          </span><br>
-          <span class="secondary-text mt-0">INITIAL</span>
+    <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3" style="text-align: center">
+        <div>
+          <%= link_to weights_path do %>
+            <%= image_tag "scale-icon.png" %>
+          <% end %>
         </div>
-        <div class="mx-4" style="text-align: center;">
+        <div class="mx-3" style="text-align: center;">
           <span>
-            <%= @weights.last.nil? ? "-" : @weights.last.value %>
+            <%= current_user.weight_before_surgery %><span>kg</span>
+          </span><br>
+          <span class="mt-0">INITIAL</span>
+        </div>
+        <div class="mx-3" style="text-align: center;">
+          <span>
+            <%= @weights.last.nil? ? "-" : @weights.last.value %><span>kg</span>
           </span><br>
           <span class="secondary-text mt-0">CURRENT</span>
         </div>
         <div class="mx-3" style="text-align: center;">
           <span>
-            <%= current_user.target_weight %>
+            <%= current_user.target_weight %><span>kg</span>
           </span><br>
-          <span class="secondary-text mt-0">TARGET</span>
+          <span class="mt-0">TARGET</span>
         </div>
-        <%= link_to "My Weight", weights_path, class:"btn-green p-2"  %>
-      </div>
     </div>
     <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3" style="text-align: center">
-      <p class="fw-semibold">Vitamin Intake</p>
-      <p>Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
-      <p>Your current streak is: <%= current_user.consecutive_days %> </p>
-      <%= link_to "Vitamins", vitamins_path, class:"btn-green p-2" %>
+      <a>
+        <%= link_to vitamins_path do %>
+          <%= image_tag "vitamin_icon.png" %>
+        <% end %>
+      </a>
+      <div class="mx-3" style="text-align: center;">
+        <span>Vitamin streak record: </span><br>
+        <span><%= current_user.vitamin_record %> </span>
+      </div>
+      <div style="text-align: center;">
+        <span>Current streak: </span><br>
+        <span><%= current_user.consecutive_days %> </span>
+      </div>
     </div>
     <div class="green-shadow-l px-3 p-3 card-product mb-3" style="text-align: center">
       <%= link_to "My Prescriptions", prescriptions_path, class:"btn-green p-2" %>
