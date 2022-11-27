@@ -58,13 +58,23 @@
       </div>
     </div>
     <div class="green-shadow-l px-3 p-3 card-product mb-3" style="text-align: center">
-      Achieved goals: <%= @done_goals.count%>
-      Open goals: <%= @open_goals.count %>
-      <%= link_to "see my goals", my_goals_path, class:"btn-green" %>
+      <a>
+        <%= link_to my_goals_path do %>
+          <%= image_tag "goal-icon.png" %>
+        <% end %>
+      </a>
+      <div class="mx-3" style="text-align: center;">
+        <span>Achieved goals:</span><br>
+        <span><%= @done_goals.count%> </span>
+      </div>
+      <div style="text-align: center;">
+        <span>Open goals:</span><br>
+        <span><%= @open_goals.count%> </span>
+      </div>
     </div>
   </div>
   <div class="mt-3 b-10 p-3">
-    <%= form_with url: recipes_path, method: :get, class: "d-col align-center" do %>
+    <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
           class: "form-control  recipes-search",
