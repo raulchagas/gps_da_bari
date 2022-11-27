@@ -1,61 +1,91 @@
+<%= provide :title, "Weight Progress" %>
 <div class="container weight-container">
   <div class="grid-2-1 green-shadow-l px-3 rounded-l">
 
-      <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
-        <div><%= f.input :value,  label: 'add weight' %></div>
-        <div style="width:fit-content; background-color: #A4C3B2;"><%= f.submit "Add" %></div>
-      <% end %>
+    <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
+      <div><%= f.input :value,  label: 'add weight' %></div>
+      <div style="width:fit-content; background-color: #A4C3B2;"><%= f.submit "Add" %></div>
+    <% end %>
 
-    <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
-      <div class="recipe-factors mx-3" style="text-align: center;">
-        <span class="mb-0">
-          <%= @weights.first.value %>
-        </span><br>
-         <span class="secondary-text mt-0">INITIAL</span>
+    <% unless @weights.empty? %>
+      <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
+        <div class="recipe-factors mx-3" style="text-align: center;">
+          <span class="mb-0">
+            <%= @weights.first.value %>
+          </span><br>
+          <span class="secondary-text mt-0">INITIAL</span>
+        </div>
+
+        <div class="recipe-factors mx-4" style="text-align: center;">
+          <span class="mb-0">
+            <%= @weights.last.value %>
+          </span><br>
+          <span class="secondary-text mt-0">CURRENT</span>
+        </div>
+
+        <div class="recipe-factors mx-3" style="text-align: center;">
+          <span class="mb-0">
+            <%= (@weights.last.value - @weights.first.value) %>
+          </span><br>
+          <span class="secondary-text mt-0">CHANGE</span>
+        </div>
+
       </div>
+    <% else %>
+      <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
+        <div class="recipe-factors mx-3" style="text-align: center;">
+          <span class="mb-0 secondary-text">
+            <%= "No weight logged" %>
+          </span><br>
+          <span class="secondary-text mt-0">INITIAL</span>
+        </div>
 
-      <div class="recipe-factors mx-4" style="text-align: center;">
-        <span class="mb-0">
-          <%= @weights.last.value %>
-        </span><br>
-         <span class="secondary-text mt-0">CURRENT</span>
+        <div class="recipe-factors mx-4" style="text-align: center;">
+          <span class="mb-0 secondary-text">
+            <%= "No weight logged" %>
+          </span><br>
+          <span class="secondary-text mt-0">CURRENT</span>
+        </div>
+
+        <div class="recipe-factors mx-3" style="text-align: center;">
+          <span class="mb-0 secondary-text">
+            <%= "No weight logged" %>
+          </span><br>
+          <span class="secondary-text mt-0">CHANGE</span>
+        </div>
       </div>
-
-      <div class="recipe-factors mx-3" style="text-align: center;">
-        <span class="mb-0">
-          <%= (@weights.last.value - @weights.first.value) %>
-        </span><br>
-         <span class="secondary-text mt-0">CHANGE</span>
-      </div>
-
-    </div>
+    <% end %>
 
   </div>
 
   <div class="green-shadow-l px-3 rounded-l">
-    <% @weigts_values = []%>
+    <% @weights_values = []%>
     <% @weights.each do |weight| %>
-      <% @weigts_values << weight.value %>
-      <% @weigts_values.min %>
+      <% @weights_values << weight.value %>
+      <% @weights_values.min %>
     <% end %>
 
     <div>
-      <%= form_with url: weights_path, method: :get, class:"align-center text-muted small d-flex pt-2 justify-content-around" do |form| %>
-        <div>
-          <%= form.label :start_date, "From " %>
-          <%= form.date_field :start_date, value: params[:start_date], class:"me-4 text-muted mb-2", style:"width: 80px; align-self: end;" %>
+      <%= form_with url: weights_path, method: :get, class:"align-center text-muted small d-flex pt-2 justify-content-around align-center align-items-center" do |form| %>
+        <div class="text-align-center me-4">
+          <%= form.label :start_date, "From" %>
+          <%= form.date_field :start_date, value: params[:start_date], class:"ms-2 text-muted mb-2 rounded-l", style:"text-align:center; width: 100px; align-self: end; border: 0.5px solid;" %>
         </div>
-        <div>
-          <%= form.label :end_date, "To " %>
-          <%= form.date_field :end_date, value: params[:end_date], class:"me-4 text-muted mb-2", style:"width: 80px; align-self: end;" %>
-        </div>
+        <div class="text-align-center me-4">
+          <%= form.label :end_date, "To" %>
+          <%= form.date_field :end_date, value: params[:end_date], class:"ms-2 text-muted mb-2 rounded-l", style:"text-align:center; width: 100px; align-self: end; border: 0.5px solid;" %>
+        </div class="text-align-center">
         <%= form.button :submit, class:"color-green" do %>
-          <i class="fa-solid fa-filter"></i>
+          <i class="fa-solid fa-filter" style="font-size: 24px;"></i>
         <% end %>
       <% end %>
     </div>
 
-    <%= line_chart Weight.pluck(:date, :value), min: (@weigts_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+    <% unless @weights.empty? %>
+      <%= line_chart @weights.pluck(:date, :value), min: (@weights_values.min * 0.9), colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+    <% else %>
+      <%= line_chart 0, colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+    <% end %>
   </div>
 
  </div>

@@ -1,23 +1,23 @@
 <div class="container-fluid sticky-top">
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon nav-bari">
-    <div class="container-fluid">
-      <div class="navbar-brand">
+  <div class="navbar navbar-expand-lg navbar-light navbar-lewagon nav-bari">
+    <%# <div class="container-fluid"> %>
+      <div class="navbar-brand one-fourth align-left">
         <% if user_signed_in? && current_user&.avatar&.attached? %>
           <%= cl_image_tag current_user.avatar.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag "user.png" %>
         <% end%>
       </div>
-      <h1 class="font-dark-green">GPS da Bari</h1>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="fa-solid fa-bars icon-dark-green"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto dropdown-color text-center">
+      <h1 class="font-dark-green two-fourths"><%= yield :title %></h1>
+      <div class="navbar-toggler one-fourth align-right" >
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"  style="background-color: transparent; border: 0px;">
+          <span class="fa-solid fa-bars"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse one-fourth " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto dropdown-color text-center align-right">
           <% if user_signed_in? %>
-            <li class="nav-item active icon-dark-green
-            ">
+            <li class="nav-item active icon-dark-green">
               <%= link_to "Home", dashboards_path, class: "nav-link  icon-dark-green" %>
             </li>
             <li class="nav-item">
@@ -34,6 +34,6 @@
           <% end %>
         </ul>
       </div>
-    </div>
+    <%# </div> %>
   </div>
 </div>
