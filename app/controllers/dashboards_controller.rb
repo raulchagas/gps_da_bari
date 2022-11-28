@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
   def index
-    @weights = Weight.where(user: current_user).order(date: :asc)
+    @weights = Weight.where(user: current_user).order(created_at: :asc)
     @body_fats = BodyFat.where(user: current_user).order(date: :desc)
     @vitamins = Vitamin.where(user: current_user).order(date: :desc)
     @goals = Goal.where(user: current_user)
