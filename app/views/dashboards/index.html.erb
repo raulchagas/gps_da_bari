@@ -10,7 +10,7 @@
     <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3" style="text-align: center">
       <div>
         <%= link_to weights_path do %>
-          <%= image_tag "scale-icon.png" %>
+          <%= image_tag "scale-purp.png" %>
         <% end %>
       </div>
       <div class="mx-3" style="text-align: center;">
@@ -35,7 +35,7 @@
     <div class="green-shadow-l px-3 p-3 card-product mt-3 mb-3" style="text-align: center">
       <a>
         <%= link_to vitamins_path do %>
-          <%= image_tag "vitamin_icon.png" %>
+          <%= image_tag "medicine-purp.png" %>
         <% end %>
       </a>
       <div class="mx-3" style="text-align: center;">
@@ -50,7 +50,7 @@
     <div class="green-shadow-l px-3 p-3 card-product mb-3">
       <a>
         <%= link_to prescriptions_path do %>
-          <%= image_tag "medical-icon.png" %>
+          <%= image_tag "medical-purp.png" %>
         <% end %>
       </a>
       <div style="text-align: center;">
@@ -60,7 +60,7 @@
     <div class="green-shadow-l px-3 p-3 card-product mb-3" style="text-align: center">
       <a>
         <%= link_to my_goals_path do %>
-          <%= image_tag "goal-icon.png" %>
+          <%= image_tag "dart-purp.png" %>
         <% end %>
       </a>
       <div class="mx-3" style="text-align: center;">
@@ -80,12 +80,12 @@
           class: "form-control  recipes-search",
           placeholder: "Find a recipe"
         %>
-      <%= submit_tag "Find recipes", class: "btn-green p-2" %>
+      <%= submit_tag "Find recipes", class: "btn-purp p-2" %>
     <% end %>
   </div>
 </div>
 <script>
   document.getElementById("progress-circle").style.background = `radial-gradient(white 50%, transparent 51%),
   conic-gradient(transparent 0deg ${<%= current_user.progress_value * 3.6 %>}deg, gainsboro ${<%= current_user.progress_value * 3.6 %>}deg 360deg),
-  conic-gradient(green 0deg, green 90deg, lightgreen 180deg, green)`;
+  conic-gradient(slateblue 0deg, slateblue 90deg, slateblue 180deg, purple)`;
 </script>
