@@ -50,6 +50,8 @@ weights.each do |w|
   )
 end
 
+
+
 puts "Creating vitamins"
 Vitamin.create!(
   date: (Date.today - 10),
