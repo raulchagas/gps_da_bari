@@ -9,9 +9,9 @@
 .nav-bari {
   border-radius: 0px 0px 23px 23px;
   height: 70px;
-  margin-left: 35px;
-  margin-right: 35px;
-  background-color: #98C9A3;
+  margin-left: 0px;
+  margin-right: 0px;
+  background-color: #218380;
   justify-content: space-around;
 }
 
@@ -20,8 +20,8 @@
     h1{
       font-size: 24px;
     }
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 1px;
+    margin-right: 1px;
   }
 }
 .navbar-toggler{
@@ -34,15 +34,15 @@
 }
 
 .icon-dark-green {
-  color: #344337;
+  color: white;
 }
 
 .font-dark-green {
-  color: #344337;
+  color: white;
 }
 
 .dropdown-color {
-  background-color: #98C9A3;
+  background-color: #218380;
   border-radius: 5px;
 }
 
@@ -64,4 +64,8 @@
 .align-right {
   margin-left: auto;
   margin-right: 10px !important;
+}
+
+.fa-bars {
+  color: white;
 }

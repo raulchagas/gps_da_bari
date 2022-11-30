@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :prescriptions, only: %i[index show new create edit update destroy]
   get "my_goals", to: "goals#my_goals"
   patch "goals/:id/set_as_done", to: "goals#set_as_done", as: :done
-  get "home" , to: "pages#home"
+  get "home", to: "pages#home"
 end

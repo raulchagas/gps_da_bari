@@ -6,74 +6,91 @@
     </div>
     <span>My Weight</span>
   </div>
-  <div class="green-shadow-l rounded w-100">
-    <div class="d-flex fs-normal p-3 mb-3">
-      <div class="mx-3" style="text-align: center;">
-        <span class="mb-0">
-          <%= current_user.weight_before_surgery %>
-        </span><br>
-        <span class="secondary-text mt-0">INITIAL</span>
+  <div class="cards">
+    <div class="green-shadow-l px-2 p-3 card-product mt-3 mb-3 py-2" style="text-align: center">
+      <div>
+        <%= link_to weights_path do %>
+          <%= image_tag "scale-purp.png" %>
+        <% end %>
       </div>
-      <div class="mx-4" style="text-align: center;">
-        <span class="mb-0">
-          <%= @weights.last.nil? ? "-" : @weights.last.value %>
+      <div class="mx-3" style="text-align: center;">
+        <span>
+          <%= current_user.weight_before_surgery %><span>kg</span>
+        </span><br>
+        <span class="mt-0">INITIAL</span>
+      </div>
+      <div class="mx-3" style="text-align: center;">
+        <span>
+          <%= @weights.last.nil? ? "-" : @weights.last.value %><span>kg</span>
         </span><br>
         <span class="secondary-text mt-0">CURRENT</span>
       </div>
       <div class="mx-3" style="text-align: center;">
-        <span class="mb-0">
-          <%= current_user.target_weight %>
+        <span>
+          <%= current_user.target_weight %><span>kg</span>
         </span><br>
-        <span class="secondary-text mt-0">TARGET</span>
+        <span class="mt-0">TARGET</span>
       </div>
-      <%= link_to "My Weight", weights_path, class:"btn-green p-2"  %>
+    </div>
+    <div class="green-shadow-l px-2 p-3 card-product mt-3 mb-3 mb-3 py-2" style="text-align: center">
+      <a>
+        <%= link_to vitamins_path do %>
+          <%= image_tag "medicine-purp.png" %>
+        <% end %>
+      </a>
+      <div class="mx-3" style="text-align: center;">
+        <span>Vitamin streak record: </span><br>
+        <span><%= current_user.vitamin_record %> </span>
+      </div>
+      <div style="text-align: center;">
+        <span>Current streak: </span><br>
+        <span><%= current_user.consecutive_days %> </span>
+      </div>
+    </div>
+    <div class="green-shadow-l px-2 p-3 card-product mb-3 mb-3 py-2">
+      <a>
+        <%= link_to prescriptions_path do %>
+          <%= image_tag "medical-purp.png" %>
+        <% end %>
+      </a>
+      <div style="text-align: center;">
+        <span class="mx-3">Manage my prescriptions </span><br>
+      </div>
+    </div>
+    <div class="green-shadow-l px-2 p-3 card-product mb-3 mb-3 py-2" style="text-align: center">
+      <a>
+        <%= link_to my_goals_path do %>
+          <%= image_tag "dart-purp.png" %>
+        <% end %>
+      </a>
+      <div class="mx-3" style="text-align: center;">
+        <span>Achieved goals:</span><br>
+        <span><%= @done_goals.count%> </span>
+      </div>
+      <div style="text-align: center;">
+        <span>Open goals:</span><br>
+        <span><%= @open_goals.count%> </span>
+      </div>
     </div>
   </div>
-  <div class="green-shadow-l px-3 p-3 rounded mt-3 mb-5 w-100" style="text-align: center">
-    <p class="fw-semibold">Vitamin Intake</p>
-    <p>Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
-    <p>Your current streak is: <%= current_user.consecutive_days %> </p>
-    <%= link_to "Vitamins", vitamins_path, class:"btn-green p-2" %>
-  </div>
-  <div class="green-shadow-l px-3 p-3 rounded mb-5 w-100" style="text-align: center">
-    <%= link_to "My Prescriptions", prescriptions_path, class:"btn-green p-2" %>
-  </div>
-  <div class="green-shadow-l px-3 p-3 rounded mb-5 w-100" style="text-align: center">
-    Achieved goals: <%= @done_goals.count%>
-    Open goals: <%= @open_goals.count %>
-
-    <%= link_to "see my goals", my_goals_path, class:"btn-green" %>
-  </div>
-
-  <div class="green-shadow-l px-3 rounded mb-5">
-    <% if @body_fats.present? %>
-      Body_fat: <%= @body_fats.last.value %>%
-    <% end %>
-      <%= link_to "see my Body Fat", body_fats_path, class:"btn-green" %>
-  </div>
-  <div class="green-shadow-l px-3 rounded mb-5 w-100">
+  <div class="card-product green-shadow-l mt-3 b-10 p-2">
+        <a>
+        <%= link_to recipes_path do %>
+          <%= image_tag "cooking.png" %>
+        <% end %>
+      </a>
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
-          class: "form-control  recipes-search",
-          placeholder: "Find a recipe"
+          class: "form-control mx-3",
+          placeholder: "Find over 2 million recipes!"
         %>
-      <%= submit_tag "Find recipes", class: "btn-green mx-2 " %>
+      <%= submit_tag "Go", class: "btn-purp p-2" %>
     <% end %>
   </div>
 </div>
 <script>
   document.getElementById("progress-circle").style.background = `radial-gradient(white 50%, transparent 51%),
   conic-gradient(transparent 0deg ${<%= current_user.progress_value * 3.6 %>}deg, gainsboro ${<%= current_user.progress_value * 3.6 %>}deg 360deg),
-  conic-gradient(green 0deg, green 90deg, lightgreen 180deg, green)`;
+  conic-gradient(teal 0deg, lightseagreen 90deg, purple 180deg, mediumpurple)`;
 </script>
-
-<%# <div class="green-shadow-l px-3 rounded mb-5 w-100"> %>
-<%# <% if @body_fats.present? %>
-<%# Body_fat: <%= @body_fats.last.value %>
-<%# Adicionar link para ADD body fat igual a weight %>
-<%# <%= link_to "see my body_fat", body_fats_path, class:"btn-green" %>
-<%# <% else %>
-<%# Adicionar link para ADD body fat igual a weight %>
-<%# <% end %>
-<%# </div> %>

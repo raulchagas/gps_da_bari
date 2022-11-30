@@ -12,7 +12,26 @@
   padding-right: 8px;
 
   &:hover{
-  background-color: #4A7553;
+  background-color: #265c57;
+  color: #ffffff;
+  }
+}
+
+.btn-purp{
+  text-decoration: none;
+  background-color: #633f99;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: smaller;
+  margin: 7px;
+  border-radius: 5px;
+  border: 0px;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+
+  &:hover{
+  background-color: #563A7F;
   color: #ffffff;
   }
 }
@@ -21,8 +40,8 @@
   font-size: 18px;
   line-height: 1.7;
   color: #fff;
-  background-color: #4A7553;
-  border: 1px solid #4A7553;
+  background-color: #265c57;
+  border: 1px solid #265c57;
   width: 100%;
   padding: 5px 10px;
   border-radius: 4px;

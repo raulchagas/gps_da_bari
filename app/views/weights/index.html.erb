@@ -11,7 +11,7 @@
       <div class="d-flex both-margin-separator fs-normal p-3 mb-3">
         <div class="recipe-factors mx-3" style="text-align: center;">
           <span class="mb-0">
-            <%= @weights.first.value %>
+            <%= current_user.weight_before_surgery %>
           </span><br>
           <span class="secondary-text mt-0">INITIAL</span>
         </div>
@@ -25,7 +25,7 @@
 
         <div class="recipe-factors mx-3" style="text-align: center;">
           <span class="mb-0">
-            <%= (@weights.last.value - @weights.first.value) %>
+            <%= (@weights.last.value - current_user.weight_before_surgery) %>
           </span><br>
           <span class="secondary-text mt-0">CHANGE</span>
         </div>
