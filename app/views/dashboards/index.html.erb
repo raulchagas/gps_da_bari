@@ -17,7 +17,7 @@
         <span>
           <%= current_user.weight_before_surgery %><span>kg</span>
         </span><br>
-        <span class="mt-0">INITIAL</span>
+        <span class="secondary-text mt-0">INITIAL</span>
       </div>
       <div class="mx-3" style="text-align: center;">
         <span>
@@ -29,7 +29,7 @@
         <span>
           <%= current_user.target_weight %><span>kg</span>
         </span><br>
-        <span class="mt-0">TARGET</span>
+        <span class="secondary-text mt-0">TARGET</span>
       </div>
     </div>
     <div class="green-shadow-l px-2 p-3 card-product mt-3 mb-3 mb-3 py-2" style="text-align: center">
@@ -83,7 +83,7 @@
       <%= text_field_tag :query,
           params[:query],
           class: "form-control mx-3",
-          placeholder: "Find over 2 million recipes!"
+          placeholder: "Search 2 million recipes!"
         %>
       <%= submit_tag "Go", class: "btn-purp p-2" %>
     <% end %>
