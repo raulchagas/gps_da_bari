@@ -48,21 +48,19 @@
 
 .one-fourth {
   position: relative;
-  width: 20%;
+  width: 20% !important;
 }
 .two-fourths {
   position: relative;
-  width: 45%;
+  width: 45% !important;
   text-align: center;
 }
 
  .align-left {
-  margin-right: auto;
   margin-left: 10px !important;
 }
 
 .align-right {
-  margin-left: auto;
   margin-right: 10px !important;
 }
 
