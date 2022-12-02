@@ -8,6 +8,9 @@
       <%= image_tag("medical-prescription-large.png", width: 300, height: 300, class:"p-5", style:"opacity:0.2;")%>
     <% end %>
     <h4 class="col mt-4">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-arrow-left details-icon edit-prescription-icon color-purple"></i>
+      <% end %>
       <%= link_to "", edit_prescription_path(@prescription), class: "fa-solid fa-pen-to-square details-icon edit-prescription-icon color-purple" %>
       <%= link_to "",
         prescription_path(@prescription),
