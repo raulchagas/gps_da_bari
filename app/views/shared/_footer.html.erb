@@ -1,33 +1,29 @@
 <footer>
-    <div class="footer" style="background-color: #218380; height: 60px;">
-      <div class="footer-links">
-
-        <%= link_to weights_path do %>
-            <%= image_tag("body-scale.png", width: 25, height: 25)%>
+  <div class="footer" style="background-color: #218380; height: 60px;">
+    <div class="footer-links">
+      <%= link_to weights_path do %>
+        <%= image_tag("body-scale.png", width: 25, height: 25)%>
+      <%end%>
+      <%= link_to vitamins_path do %>
+        <%= image_tag("capsules.png", width: 25, height: 25)%>
+      <%end%>
+      <div class= "btn-home rounded-circle">
+        <%= link_to root_path do %>
+          <%= image_tag("home-white.png", width: 40, height: 40)%>
         <%end%>
-
-
-        <%= link_to vitamins_path do %>
-            <%= image_tag("capsules.png", width: 25, height: 25)%>
-        <%end%>
-
-        <div class= "btn-home rounded-circle">
-          <%= link_to root_path do %>
-            <%= image_tag("home-white.png", width: 40, height: 40)%>
-          <%end%>
-
-        </div>
-
-        <%= link_to prescriptions_path do %>
-            <%= image_tag("medical-prescription.png", width: 25, height: 25)%>
-        <%end%>
-
-
-        <%= link_to my_goals_path do %>
-            <%= image_tag("target.png", width: 25, height: 25)%>
-        <%end%>
-
-
       </div>
+      <%= link_to prescriptions_path do %>
+        <%= image_tag("medical-prescription.png", width: 25, height: 25)%>
+      <%end%>
+      <% if (@open_goals.nil? && @done_goals.nil?) || (@open_goals.empty? && @done_goals.empty?) %>
+        <%= link_to goals_path do %>
+          <%= image_tag("target.png", width: 25, height: 25)%>
+        <% end %>
+      <% else %>
+        <%= link_to my_goals_path do %>
+          <%= image_tag("target.png", width: 25, height: 25)%>
+        <% end %>
+      <% end %>
     </div>
-  </footer>
+  </div>
+</footer>
