@@ -1,13 +1,20 @@
 <%= provide :title, "Prescription Details" %>
-<div class="container d-flex justify-content-center" style="margin-top: 80px">
-  <div class="card d-flex justify-content-center align-items-center">
-    <h1 class="card-title card-prescription-style"><strong><%= @prescription.title %></strong></h1>
-    <%= cl_image_tag @prescription.photo.key, style: "width: 400px" %>
-    <h4 class="col">
-      <%= link_to "", edit_prescription_path(@prescription), class: "fa-solid fa-pen-to-square details-icon edit-prescription-icon" %>
+<div class="container d-flex justify-content-center" style="margin-top: 30px">
+  <div class="card d-flex justify-content-center align-items-center green-shadow-l rounded-l p-3">
+    <h1 class="card-title card-prescription-style color-purple"><strong><%= @prescription.title %></strong></h1>
+    <% if @prescription.photo.key.present? %>
+      <%= cl_image_tag @prescription.photo.key,  width: 400, crop: :limit, style:"position: relative; max-width: 100%;"%>
+    <% else %>
+      <%= image_tag("medical-prescription-large.png", width: 300, height: 300, class:"p-5", style:"opacity:0.2;")%>
+    <% end %>
+    <h4 class="col mt-4">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-arrow-left details-icon edit-prescription-icon color-purple"></i>
+      <% end %>
+      <%= link_to "", edit_prescription_path(@prescription), class: "fa-solid fa-pen-to-square details-icon edit-prescription-icon color-purple" %>
       <%= link_to "",
         prescription_path(@prescription),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash trash-icon"
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-solid fa-trash trash-icon color-purple"
       %>
     </h4>
   </div>
