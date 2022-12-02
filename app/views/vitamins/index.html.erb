@@ -1,34 +1,35 @@
 <%= provide :title, "My Vitamins Intake" %>
 <div class="container">
-  <div class="vitamins-style row mt-4 animate__animated animate__fadeInDown">
+  <div class="vitamins-style justify-content-center row mt-4 animate__animated animate__fadeInDown">
     <% @created = @vitamins %>
     <div class="vitamins-check">
       <div class="d-flex justify-content-center">
-        <%= image_tag("medicine.png", width: 100, height: 100) %>
+        <%= image_tag("vitamins-purp.png", width: 100, height: 100) %>
       </div>
       <h3 class="mt-4 mb-4">Did you take your vitamin today?</h3>
       <% if @created.empty? %>
         <%= simple_form_for @vitamin do |f| %>
-          <%= f.submit "Yes!", class: "btn-dark-green" %>
+          <%= f.submit "Yes!", class: "btn-dark-green-new col-4" %>
         <% end %>
     </div>
     <div class="vitamins-date d-flex justify-content-center mb-2">
       <% else %>
         <% if current_user.days.first == Date.today %>
           <% @day = Date.today %>
-          <h4 class="vitamins-taken">You already took your vitamin today!</h4>
+          <h4>You already took your vitamin today!</h4>
         <% else %>
           <%= simple_form_for @vitamin do |f| %>
             <%= f.submit "Yes!", class: "btn-dark-green" %>
           <% end %>
         <% end %>
     </div>
-    <div class="card shadow vitamins-record mt-5 py-2">
-      <div class="d-flex justify-content-center align-items-center">
-        <i class="fa-solid fa-ranking-star me-2 vitamins-icon"></i>
-        <p style="margin: 0">Your vitamin streak record is: <%= current_user.vitamin_record %> </p>
+    <div class="card-vitamins shadow d-flex justify-content-between flex-wrap px-2 mt-4 py-3" >
+      <%= image_tag("trophy.png", width: 50, height: 50) %>
+      <div class="justify-content-center">
+        <h4 style="margin: 0">Your vitamin streak record is: <%= current_user.vitamin_record %> </h4>
+        <h5 style="margin: 0">Your current streak is: <%= current_user.consecutive_days %> </h5>
       </div>
-        <p style="margin: 0">Your current streak is: <%= current_user.consecutive_days %> </p>
+      <div></div>
       <% end %>
     </div>
   </div>
@@ -36,7 +37,7 @@
     <div class="calendar">
       <%= month_calendar do |date| %>
         <% if current_user.days.include?(date) %>
-          <div class="green"><%= date.day %></div>
+          <div class="purple"><%= date.day %></div>
         <% else %>
           <%= date.day %>
         <% end %>

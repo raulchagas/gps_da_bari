@@ -28,7 +28,13 @@
   border-radius: 10px;
   // justify-content: center;
 }
-
+.card-vitamins {
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  max-width: 600px;
+  // justify-content: center;
+}
 .card-product img {
   height: 100%;
   width: 60px;
