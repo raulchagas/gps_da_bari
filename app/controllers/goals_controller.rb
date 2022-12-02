@@ -19,10 +19,12 @@ class GoalsController < ApplicationController
       @goal = Goal.create(description: description, user: current_user)
       end
     end
-    if @goal.save
-      redirect_to my_goals_path
-    else
-      render :new, status: :unprocessable_entity
+    unless @goal.nil?
+      if @goal.save
+        redirect_to my_goals_path
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 

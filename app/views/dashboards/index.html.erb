@@ -59,7 +59,7 @@
     </div>
     <div class="green-shadow-l px-2 p-3 card-product mb-3 mb-3 py-2" style="text-align: center">
       <a>
-        <% if @open_goals.empty? %>
+        <% if @open_goals.empty? && @done_goals.empty? %>
           <%= link_to goals_path do %>
             <%= image_tag "dart-purp.png" %>
           <% end %>
