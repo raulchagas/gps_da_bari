@@ -33,7 +33,10 @@
   background: white;
   border-radius: 10px;
   max-width: 600px;
-  // justify-content: center;
+  justify-content: center;
+  text-align: center;
+  position:relative;
+  width:95%;
 }
 .card-product img {
   height: 100%;
