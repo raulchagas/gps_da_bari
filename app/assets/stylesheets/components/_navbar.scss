@@ -48,20 +48,24 @@
 
 .one-fourth {
   position: relative;
-  width: 20% !important;
+  width: 25% !important;
 }
 .two-fourths {
   position: relative;
-  width: 45% !important;
+  width: 50% !important;
   text-align: center;
 }
 
  .align-left {
-  margin-left: 10px !important;
+  padding-left: 10px !important;
+  margin-left: 0px;
+  margin-right: auto;
 }
 
 .align-right {
-  margin-right: 10px !important;
+  padding-right: 10px !important;
+  margin-right: 0px;
+  margin-left: auto;
 }
 
 .fa-bars {

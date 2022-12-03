@@ -1,6 +1,5 @@
 <div class="container-fluid sticky-top">
   <div class="navbar navbar-expand-lg navbar-light navbar-lewagon nav-bari">
-    <%# <div class="container-fluid"> %>
       <div class="navbar-brand one-fourth align-left">
         <% if user_signed_in? && current_user&.avatar&.attached? %>
           <%= cl_image_tag current_user.avatar.key, transformation: [{gravity: "face", height: 400, width: 400, crop: "thumb"}], class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -15,7 +14,7 @@
         </button>
       </div>
       <div class="collapse navbar-collapse one-fourth " id="navbarSupportedContent" style="min-width: fit-content !important;" >
-        <ul class="navbar-nav me-auto dropdown-color text-center align-right">
+        <ul class="navbar-nav dropdown-color text-center align-right">
           <% if user_signed_in? %>
             <li class="nav-item active icon-dark-green">
               <%= link_to "Home", dashboards_path, class: "nav-link  icon-dark-green" %>
@@ -34,6 +33,5 @@
           <% end %>
         </ul>
       </div>
-    <%# </div> %>
   </div>
 </div>
