@@ -7,7 +7,7 @@
     <span>My Weight</span>
   </div>
   <div class="cards">
-    <div class="green-shadow-l px-2 p-3 card-product mt-3 mb-3 py-2" style="text-align: center">
+    <div class="green-shadow-l px-3 mb-4 spacing card-product" style="text-align: center">
       <div>
         <%= link_to weights_path do %>
           <%= image_tag "scale-purp.png" %>
@@ -32,7 +32,7 @@
         <span class="secondary-text mt-0">TARGET</span>
       </div>
     </div>
-    <div class="green-shadow-l px-2 p-3 card-product mt-3 mb-3 mb-3 py-2" style="text-align: center">
+    <div class="green-shadow-l px-3 mb-4 spacing card-product" style="text-align: center">
       <a>
         <%= link_to vitamins_path do %>
           <%= image_tag "medicine-purp.png" %>
@@ -47,7 +47,7 @@
         <span><%= current_user.consecutive_days %> </span>
       </div>
     </div>
-    <div class="green-shadow-l px-2 p-3 card-product mb-3 mb-3 py-2">
+    <div class="green-shadow-l px-3 mb-4 spacing card-product">
       <a>
         <%= link_to prescriptions_path do %>
           <%= image_tag "medical-purp.png" %>
@@ -57,7 +57,7 @@
         <span class="mx-5 secondary-text">Manage my prescriptions </span><br>
       </div>
     </div>
-    <div class="green-shadow-l px-2 p-3 card-product mb-3 mb-3 py-2" style="text-align: center">
+    <div class="green-shadow-l px-3 mb-4 spacing card-product" style="text-align: center">
       <a>
         <% if (@open_goals.nil? && @done_goals.nil?) || (@open_goals.empty? && @done_goals.empty?) %>
           <%= link_to goals_path do %>
@@ -79,7 +79,7 @@
       </div>
     </div>
   </div>
-  <div class="card-product green-shadow-l mt-3 b-10 p-2">
+  <div class="card-product px-3 mt-4 green-shadow-l">
     <a>
       <%= link_to recipes_path do %>
         <%= image_tag "cooking.png" %>

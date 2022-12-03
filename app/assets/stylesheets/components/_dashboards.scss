@@ -77,8 +77,18 @@
   animation: loading-2 1.5s linear forwards 1.8s;
 }
 
+.spacing{
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
 
+@media (max-width: 767px) {
+  .spacing{
+    margin-bottom: 0 !important;
+  }
 
+}
 
 
 
