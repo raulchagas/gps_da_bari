@@ -59,8 +59,14 @@
     </div>
     <div class="green-shadow-l px-2 p-3 card-product mb-3 mb-3 py-2" style="text-align: center">
       <a>
-        <%= link_to my_goals_path do %>
-          <%= image_tag "dart-purp.png" %>
+        <% if (@open_goals.nil? && @done_goals.nil?) || (@open_goals.empty? && @done_goals.empty?) %>
+          <%= link_to goals_path do %>
+            <%= image_tag "dart-purp.png" %>
+          <% end %>
+        <% else %>
+          <%= link_to my_goals_path do %>
+            <%= image_tag "dart-purp.png" %>
+          <% end %>
         <% end %>
       </a>
       <div class="secondary-text mx-5" style="text-align: center;">
@@ -74,11 +80,11 @@
     </div>
   </div>
   <div class="card-product green-shadow-l mt-3 b-10 p-2">
-        <a>
-        <%= link_to recipes_path do %>
-          <%= image_tag "cooking.png" %>
-        <% end %>
-      </a>
+    <a>
+      <%= link_to recipes_path do %>
+        <%= image_tag "cooking.png" %>
+      <% end %>
+    </a>
     <%= form_with url: recipes_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
