@@ -23,7 +23,7 @@
           <%= f.input :height %>
         </div>
         <div class="col-md-12 mb-1">
-          <%= f.input :date_of_surgery, as: :string, input_html: { class: "datepicker" } %>
+          <%= f.input :date_of_surgery, as: :string, input_html: { data: {controller: "flatpicker"} } %>
         </div>
         <div class="col-md-6 mb-1">
           <%= f.input :weight_before_surgery %>

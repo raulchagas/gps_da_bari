@@ -32,7 +32,7 @@
           <%= f.input :date_of_surgery, as: :string,
                   required: true,
                   autofocus: true,
-                  input_html: { class: "datepicker", autocomplete: "date-of-surgery"  } %>
+                  input_html: { data: {controller: "flatpicker"}, autocomplete: "date-of-surgery"  } %>
         </div>
         <div class="col-md-6">
           <%= f.input :weight_before_surgery,
