@@ -1,5 +1,8 @@
 <%= provide :title, "Weight Progress" %>
 <div class="container weight-container">
+  <div class="mt-4" style="text-align: center;">
+    <%= image_tag("scale-large.png", width: 100, height: 100) %>
+  </div>
   <div class="grid-2-1 green-shadow-l px-3 rounded-l">
 
     <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>

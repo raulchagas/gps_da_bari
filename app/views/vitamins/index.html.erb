@@ -1,6 +1,6 @@
 <%= provide :title, "My Vitamins Intake" %>
 <div class="container">
-  <div class="justify-content-center row mt-4 animate__animated animate__fadeInDown">
+  <div class="justify-content-center row mt-4">
     <% @created = @vitamins %>
     <div class="vitamins-check vitamins-style">
       <div class="d-flex justify-content-center">
@@ -35,7 +35,7 @@
       <% end %>
     </div>
   </div>
-  <div class="mt-5 animate__animated animate__fadeInDown">
+  <div class="mt-5">
     <div class="calendar">
       <%= month_calendar do |date| %>
         <% if current_user.days.include?(date) %>
