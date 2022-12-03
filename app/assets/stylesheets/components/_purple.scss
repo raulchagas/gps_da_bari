@@ -20,3 +20,22 @@
   color: #ffffff;
   }
 }
+
+.btn-purple-narrow {
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  width: 60%;
+  color: #fff;
+  background-color: #633f99;
+  border: 1px solid #633f99;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 18px;
+
+  &:hover{
+    background-color: whitesmoke;
+    color: #633f99;
+    border-color: #633f99;
+    }
+}
