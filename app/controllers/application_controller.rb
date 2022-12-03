@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :date_of_surgery, :age, :sex, :height, :weight_before_surgery, :target_weight, :vitamin_record, :avatar])
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+  
 end
