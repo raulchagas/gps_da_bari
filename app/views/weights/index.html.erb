@@ -6,8 +6,8 @@
   <div class="grid-2-1 green-shadow-l px-3 rounded-l">
 
     <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
-      <div><%= f.input :value,  label: 'add weight' %></div>
-      <div style="width:fit-content; background-color: #A4C3B2;"><%= f.submit "Add" %></div>
+      <%= f.input :value,  label: 'add weight' %>
+      <%= f.submit "Add", class:"btn-purp p-2" %>
     <% end %>
 
     <% unless @weights.empty? %>
