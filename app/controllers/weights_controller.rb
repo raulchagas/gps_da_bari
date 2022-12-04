@@ -5,10 +5,12 @@ class WeightsController < ApplicationController
   end
 
   def new
+    @weights = Weight.where(user: current_user).order(created_at: :asc)
     @weight = Weight.new
   end
 
   def create
+    @weights = Weight.where(user: current_user).order(created_at: :asc)
     @weight = Weight.new(weight_params)
     @weight.user = current_user
     @weight.date = Date.today
