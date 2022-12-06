@@ -1,16 +1,16 @@
 class WeightsController < ApplicationController
   def index
-    @weights = Weight.where(user: current_user).order(created_at: :asc)
+    @weights = Weight.where(user: current_user).order(date: :asc)
     @weight = Weight.new
   end
 
   def new
-    @weights = Weight.where(user: current_user).order(created_at: :asc)
+    @weights = Weight.where(user: current_user).order(date: :asc)
     @weight = Weight.new
   end
 
   def create
-    @weights = Weight.where(user: current_user).order(created_at: :asc)
+    @weights = Weight.where(user: current_user).order(date: :asc)
     @weight = Weight.new(weight_params)
     @weight.user = current_user
     @weight.date = Date.today
