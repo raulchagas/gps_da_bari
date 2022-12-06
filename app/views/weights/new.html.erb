@@ -1,5 +1,46 @@
-<%= simple_form_for @weight do |f| %>
-  <%= f.input :value,  label: 'add current weight' %>
-  <%= f.input :date,  label: 'date' %>
-   <%= f.submit "Add" %>
-<% end %>
+<%= provide :title, "Weight Progress" %>
+<div class="container weight-container">
+  <div class="mt-4" style="text-align: center;">
+    <%= image_tag("scale-large.png", width: 100, height: 100) %>
+  </div>
+  <div class="my-3 green-shadow-l p-3 rounded-l" style="text-align: center;">
+
+    <%= simple_form_for @weight do |f| %>
+      <div><%= f.input :value,  label: 'add current weight' %></div>
+      <div><%= f.input :date,  label: 'date' %></div>
+      <%= f.submit "Add", class:"btn-purp p-2" %>
+    <% end %>
+
+  </div>
+
+  <div class="green-shadow-l mb-2 px-3 rounded-l">
+    <% @weights_values = []%>
+    <% @weights.each do |weight| %>
+      <% @weights_values << weight.value %>
+      <% @weights_values.min %>
+    <% end %>
+
+    <div>
+      <%= form_with url: weights_path, method: :get, class:"align-center text-muted small d-flex pt-2 justify-content-around align-center align-items-center" do |form| %>
+        <div class="text-align-center me-4">
+          <%= form.label :start_date, "From" %>
+          <%= form.date_field :start_date, value: params[:start_date], class:"ms-2 text-muted mb-2 rounded-l", style:"text-align:center; width: 100px; align-self: end; border: 0.5px solid;" %>
+        </div>
+        <div class="text-align-center me-4">
+          <%= form.label :end_date, "To" %>
+          <%= form.date_field :end_date, value: params[:end_date], class:"ms-2 text-muted mb-2 rounded-l", style:"text-align:center; width: 100px; align-self: end; border: 0.5px solid;" %>
+        </div>
+        <%= form.button :submit, style:"border: 0px; background-color: transparent;" do %>
+          <i class="fa-solid fa-filter" style="font-size: 24px; color: #633f99"></i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% unless @weights.empty? %>
+      <%= line_chart @weights.pluck(:date, :value), min: ((@weights_values.min * 0.9).round), colors: ["#633f99", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+    <% else %>
+      <%= line_chart 0, colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+    <% end %>
+  </div>
+
+ </div>

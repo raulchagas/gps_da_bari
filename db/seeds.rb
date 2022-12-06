@@ -25,7 +25,7 @@ puts "Creating user"
   target_weight: 82,
   weight_before_surgery: 120,
   password: "aaaaaa",
-  vitamin_record: 3
+  vitamin_record: 4
 )
 
 puts "Creating prescription"

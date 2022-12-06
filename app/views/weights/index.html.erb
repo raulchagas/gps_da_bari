@@ -6,8 +6,8 @@
   <div class="grid-2-1 green-shadow-l px-3 rounded-l">
 
     <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
-      <div><%= f.input :value,  label: 'add weight' %></div>
-      <div style="width:fit-content; background-color: #A4C3B2;"><%= f.submit "Add" %></div>
+      <%= f.input :value,  label: 'add weight' %>
+      <%= f.submit "Add", class:"btn-purp p-2" %>
     <% end %>
 
     <% unless @weights.empty? %>
@@ -85,7 +85,7 @@
     </div>
 
     <% unless @weights.empty? %>
-      <%= line_chart @weights.pluck(:date, :value), min: (@weights_values.min * 0.9), colors: ["#633f99", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
+      <%= line_chart @weights.pluck(:date, :value), min: ((@weights_values.min * 0.9).round), colors: ["#633f99", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
     <% else %>
       <%= line_chart 0, colors: ["#657c6a", "#666"], xmin: params[:start_date], xmax: params[:end_date] %>
     <% end %>
