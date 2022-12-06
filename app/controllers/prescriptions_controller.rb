@@ -48,6 +48,6 @@ class PrescriptionsController < ApplicationController
   end
 
   def prescription_params
-    params.require(:prescription).permit(:title, :photo, :user)
+    params.require(:prescription).permit(:title, :photo)
   end
 end
