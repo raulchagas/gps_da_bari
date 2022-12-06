@@ -1,6 +1,7 @@
 class PrescriptionsController < ApplicationController
   def index
-    @prescriptions = Prescription.all
+    @prescriptions = Prescription.where(user: current_user)
+
   end
 
   def new
@@ -47,6 +48,6 @@ class PrescriptionsController < ApplicationController
   end
 
   def prescription_params
-    params.require(:prescription).permit(:title, :photo)
+    params.require(:prescription).permit(:title, :photo, :user)
   end
 end
