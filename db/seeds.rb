@@ -17,7 +17,12 @@ puts "Creating user"
   password: "aaaaaa",
   vitamin_record: 4,
   target_weight: 82,
-  weight_before_surgery: 112
+  weight_before_surgery: 112,
+  first_name: "Raul",
+  last_name: "Chagas",
+  date_of_surgery: "01/01/2022",
+  age: 41,
+  height: 176
 )
 
 @user2 = User.create!(
@@ -38,7 +43,7 @@ Prescription.create!(
   user: @user
 )
 
-weights = [87,89,85,78,81,85,85,88,90,93,95,98,105,110,112]
+weights = [87,89,85,78,81,85,85,88,89,92,90,91,92,93,97,98,95,95,95,95,100,100,100,100,98,98,98,98,105,105,105,105,110,110,110,110,112,112,112]
 @datey = Date.today
 puts "Creating weights"
 weights.each do |w|
