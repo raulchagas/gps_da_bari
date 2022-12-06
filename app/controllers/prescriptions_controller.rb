@@ -1,6 +1,7 @@
 class PrescriptionsController < ApplicationController
   def index
-    @prescriptions = Prescription.all
+    @prescriptions = Prescription.where(user: current_user)
+
   end
 
   def new
