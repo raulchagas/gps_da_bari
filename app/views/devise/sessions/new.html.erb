@@ -2,8 +2,8 @@
 <div class="container" id="page-container">
   <div class="d-flex justify-content-center" style="margin-top: 40px;">
     <div  class="center-form">
-      <div class="container d-flex justify-content-center flex-column align-items-center">
-        <span class="mt-2" style="font-size: 26px">
+      <div class="container d-flex justify-content-center flex-column">
+        <span class="mt-2" style="font-size: 26px; text-align: center;">
           <i style="padding-right: 10px" class="fa-solid fa-arrow-right-to-bracket"></i>Log In</span>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
             <div class="form-inputs mt-3">
@@ -22,7 +22,7 @@
             </div>
           <% end %>
 
-          <span class="mb-3">Not a member yet? <%= render "devise/shared/links" %> </span>
+          <span class="mb-3" style="text-align: center">Not a member yet? <%= render "devise/shared/links" %> </span>
       </div>
     </div>
   </div>
