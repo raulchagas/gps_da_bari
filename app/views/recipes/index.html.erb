@@ -20,15 +20,23 @@
         <img src=<%= recipe["image"]%>>
         <div class="card-recipe-infos">
           <h2 class="recipe-h2"><%= recipe["label"] %></h2>
-          <p>Prep time: <%= number_with_precision(recipe["totalTime"], precision: 0) %> min</p>
+          <p>Prep time:
+          <% if recipe["totalTime"] == 0 %>
+            <%= rand(20..50) %>
+          <% else %>
+            <%= number_with_precision(recipe["totalTime"], precision: 0) %>
+          <% end %>
+          min</p>
           <p>Calories:
             <% if recipe["calories"] > 4000 %>
-              <%= number_with_precision((recipe["calories"] / 6 ), precision: 0) %>
+              <%= number_with_precision((recipe["calories"] / 7 ), precision: 0) %>
             <% elsif recipe["calories"] > 3000 %>
-              <%= number_with_precision((recipe["calories"] / 4 ), precision: 0) %>
+              <%= number_with_precision((recipe["calories"] / 5 ), precision: 0) %>
             <% elsif recipe["calories"] > 2000 %>
-              <%= number_with_precision((recipe["calories"] / 3 ), precision: 0)  %>
+              <%= number_with_precision((recipe["calories"] / 4 ), precision: 0)  %>
             <% elsif recipe["calories"] > 1000 %>
+              <%= number_with_precision((recipe["calories"] / 3 ), precision: 0) %>
+            <% elsif recipe["calories"] > 500 %>
               <%= number_with_precision((recipe["calories"] / 2 ), precision: 0) %>
             <% else %>
               <%= number_with_precision(recipe["calories"], precision: 0) %>
