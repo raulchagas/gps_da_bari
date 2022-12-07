@@ -25,6 +25,8 @@ puts "Creating user"
   height: 176
 )
 
+@user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/raul_pic.png')), filename: "user_avatar", content_type: "image_png")
+
 @user2 = User.create!(
   email: "teste2@teste",
   target_weight: 82,
