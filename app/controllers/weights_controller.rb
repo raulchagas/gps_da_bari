@@ -13,7 +13,9 @@ class WeightsController < ApplicationController
     @weights = Weight.where(user: current_user).order(date: :asc)
     @weight = Weight.new(weight_params)
     @weight.user = current_user
-    @weight.date = Date.today
+    @weight.date = Date.today if @weight.date.nil?
+
+
     if @weight.save
       redirect_to weights_path
     else

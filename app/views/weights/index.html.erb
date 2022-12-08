@@ -7,6 +7,7 @@
 
     <%= simple_form_for @weight, :html => {class: 'form-inline p-3 mb-3' } do |f| %>
       <%= f.input :value,  label: 'add weight' %>
+      <% f.input :date,  value: Date.today%>
       <%= f.submit "Add", class:"btn-purp p-2" %>
     <% end %>
 
